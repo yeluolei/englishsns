@@ -87,6 +87,16 @@
     <Content Include="App_Data\englishdict_log.ldf">
       <DependentUpon>englishdict.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\BookInfo.css" />
+    <Content Include="Content\BookViewStyle.css" />
+    <Content Include="Content\demo.css" />
+    <Content Include="Content\flora.accordion.css" />
+    <Content Include="Content\homeindex.css" />
+    <Content Include="Content\jquery-ui-1.8.2.custom.css" />
+    <Content Include="Content\jquery.rating.css" />
+    <Content Include="Content\SearchTitle.css" />
+    <Content Include="Content\star.gif" />
+    <Content Include="Content\UserCenter.css" />
     <Content Include="Global.asax" />
     <Content Include="Views\LookUp\Index.aspx" />
     <Content Include="Web.config" />
