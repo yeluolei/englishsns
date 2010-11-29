@@ -2,23 +2,23 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="englishdict">
   <DataContextMoniker Name="/englishdictDataContext" />
   <nestedChildShapes>
-    <classShape Id="7ca63c3a-7208-4959-a619-7cf15afa20e8" absoluteBounds="3.5, 0.875, 2, 1.1895064290364585">
+    <classShape Id="4efa0428-6256-4b80-8175-b61cd22bd494" absoluteBounds="3.5, 0.875, 2, 1.3805261230468753">
       <DataClassMoniker Name="/englishdictDataContext/explanation" />
       <nestedChildShapes>
-        <elementListCompartment Id="ae64ddbe-3734-43cb-bc5c-06cf54303a20" absoluteBounds="3.515, 1.335, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="081db8ee-92d7-4e41-9810-4d9b5cca5ba2" absoluteBounds="3.515, 1.335, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="d9b96bb9-4aca-42ef-b913-2c5cb8872cc2" absoluteBounds="0.75, 0.875, 2, 1.1895064290364585">
+    <classShape Id="6fa8a9e0-cbec-4088-9e18-dd35e35fc62c" absoluteBounds="0.75, 1, 2, 1.1895064290364585">
       <DataClassMoniker Name="/englishdictDataContext/word" />
       <nestedChildShapes>
-        <elementListCompartment Id="5fe95edf-17c4-4da9-8236-15f269b822b5" absoluteBounds="0.765, 1.335, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="25d646a8-fb4b-4afd-bcef-9fa99c25d73b" absoluteBounds="0.765, 1.46, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 1.46975321451823); (3.5 : 1.46975321451823)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.59475321451823); (3.5 : 1.59475321451823)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/englishdictDataContext/word/word_explanation" />
       <nodes>
-        <classShapeMoniker Id="d9b96bb9-4aca-42ef-b913-2c5cb8872cc2" />
-        <classShapeMoniker Id="7ca63c3a-7208-4959-a619-7cf15afa20e8" />
+        <classShapeMoniker Id="6fa8a9e0-cbec-4088-9e18-dd35e35fc62c" />
+        <classShapeMoniker Id="4efa0428-6256-4b80-8175-b61cd22bd494" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

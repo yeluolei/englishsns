@@ -30,13 +30,16 @@ namespace englishsnsVS10
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void Insertexplanation(explanation instance);
+    partial void Updateexplanation(explanation instance);
+    partial void Deleteexplanation(explanation instance);
     partial void Insertword(word instance);
     partial void Updateword(word instance);
     partial void Deleteword(word instance);
     #endregion
 		
 		public englishdictDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["englishdictConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["englishdictConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -83,15 +86,35 @@ namespace englishsnsVS10
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.explanations")]
-	public partial class explanation
+	public partial class explanation : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _word_id;
 		
 		private string _theExplanation;
 		
+		private int _id;
+		
+		private EntityRef<word> _word;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onword_idChanging(int value);
+    partial void Onword_idChanged();
+    partial void OntheExplanationChanging(string value);
+    partial void OntheExplanationChanged();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    #endregion
+		
 		public explanation()
 		{
+			this._word = default(EntityRef<word>);
+			OnCreated();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_word_id", DbType="Int NOT NULL")]
@@ -105,7 +128,15 @@ namespace englishsnsVS10
 			{
 				if ((this._word_id != value))
 				{
+					if (this._word.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onword_idChanging(value);
+					this.SendPropertyChanging();
 					this._word_id = value;
+					this.SendPropertyChanged("word_id");
+					this.Onword_idChanged();
 				}
 			}
 		}
@@ -121,8 +152,86 @@ namespace englishsnsVS10
 			{
 				if ((this._theExplanation != value))
 				{
+					this.OntheExplanationChanging(value);
+					this.SendPropertyChanging();
 					this._theExplanation = value;
+					this.SendPropertyChanged("theExplanation");
+					this.OntheExplanationChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="word_explanation", Storage="_word", ThisKey="word_id", OtherKey="id", IsForeignKey=true)]
+		public word word
+		{
+			get
+			{
+				return this._word.Entity;
+			}
+			set
+			{
+				word previousValue = this._word.Entity;
+				if (((previousValue != value) 
+							|| (this._word.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._word.Entity = null;
+						previousValue.explanations.Remove(this);
+					}
+					this._word.Entity = value;
+					if ((value != null))
+					{
+						value.explanations.Add(this);
+						this._word_id = value.id;
+					}
+					else
+					{
+						this._word_id = default(int);
+					}
+					this.SendPropertyChanged("word");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -137,6 +246,8 @@ namespace englishsnsVS10
 		
 		private int _id;
 		
+		private EntitySet<explanation> _explanations;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -149,6 +260,7 @@ namespace englishsnsVS10
 		
 		public word()
 		{
+			this._explanations = new EntitySet<explanation>(new Action<explanation>(this.attach_explanations), new Action<explanation>(this.detach_explanations));
 			OnCreated();
 		}
 		
@@ -192,6 +304,19 @@ namespace englishsnsVS10
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="word_explanation", Storage="_explanations", ThisKey="id", OtherKey="word_id")]
+		public EntitySet<explanation> explanations
+		{
+			get
+			{
+				return this._explanations;
+			}
+			set
+			{
+				this._explanations.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -210,6 +335,18 @@ namespace englishsnsVS10
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_explanations(explanation entity)
+		{
+			this.SendPropertyChanging();
+			entity.word = this;
+		}
+		
+		private void detach_explanations(explanation entity)
+		{
+			this.SendPropertyChanging();
+			entity.word = null;
 		}
 	}
 }

@@ -69,6 +69,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LookUpController.cs" />
+    <Compile Include="Models\LookUpWordResult.cs" />
     <Compile Include="englishdict.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

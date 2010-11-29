@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<List<string>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<englishsnsVS10.Models.LookUpWordResult>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Index
@@ -13,8 +13,8 @@
     <!--             <input title="Search" value="Look Up" type="submit" /> -->
     <!--         </center> -->
     <!--     </div> -->
-   
-    <% List<String> result = Model as List<String>;
+    <h2><%=Html.Label(Model.queryWord) %></h2>   
+    <% List<String> result = Model.explanations;
        if (result != null)
            foreach (String s in result)
            {
