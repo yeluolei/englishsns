@@ -17,7 +17,8 @@ namespace englishsnsVS10.Controllers
         }
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Index(string queryWord) {
-            var result = dictRepo.getExplanation(queryWord);
+            var exps = dictRepo.getExplanations(queryWord);
+            LookUpWordResult result = new LookUpWordResult(queryWord, exps);
             return View(result);
         }
     }

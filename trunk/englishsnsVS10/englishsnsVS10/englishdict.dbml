@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="englishdict" Class="englishdictDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\englishdict.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="englishdictConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\englishdict.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="englishdictConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.explanations" Member="explanations">
     <Type Name="explanation">
       <Column Name="word_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="theExplanation" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Association Name="word_explanation" Member="word" ThisKey="word_id" OtherKey="id" Type="word" IsForeignKey="true" />
     </Type>
   </Table>

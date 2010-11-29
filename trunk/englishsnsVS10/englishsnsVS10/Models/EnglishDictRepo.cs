@@ -8,11 +8,13 @@ namespace englishsnsVS10.Models
     public class EnglishDictRepo
     {   
         private englishdictDataContext db = new englishdictDataContext();
-        public List<String> getExplanation(String queryWord) {
-           var  qresult = from ex in db.explanations
-                          from wd in db.words
-                          where ex.word_id==wd.id && wd.theWord==queryWord
-                          select ex.theExplanation;
+        public List<String> getExplanations(String queryWord) {
+//             var qresult = from wd in db.words
+//                     where wd.theWord == queryWord
+//                     select wd.explanations.;
+           var qresult = from exp in db.explanations
+                     where exp.word.theWord==queryWord
+                     select exp.theExplanation;
            return qresult.ToList();
         }
     }
