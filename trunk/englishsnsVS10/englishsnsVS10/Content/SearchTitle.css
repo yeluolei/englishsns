@@ -1,0 +1,53 @@
+﻿body {
+}
+
+li
+{
+    margin-top:3px;
+    list-style:none;
+    }
+.searchresult ul
+{
+    border:0px;
+    }
+
+.searchresult li
+{
+    border:0px;
+    }
+
+.list
+{
+    margin-left:20px;
+    border:0px;
+    }
+
+.list td
+{
+    border:0px;
+    }
+
+.list tr
+{
+    border:0px;
+    }
+.list hide
+{
+    visibility:hidden;
+    }
+
+.add
+{
+    background-color: #969EE9;
+}
+
+.cover
+{
+    width:100px;
+    height:80px;
+    }
+
+.cover img
+{
+    height:80px;
+    }

@@ -1,0 +1,141 @@
+﻿body 
+{
+    
+}
+
+.book
+{
+    display:block;
+    }
+
+.bookcover
+{
+    width:180px;
+    padding-left:30px;
+    }
+.cover
+{
+    height:200px;
+    }
+    
+.bookInfo
+{
+    width:100%;
+    font-size:110%;
+    float:left;
+    height:200px;
+    padding:0px;
+    }
+.bookInfo table,
+.bookInfo table td,
+.bookInfo table tr
+{
+    border-width:0px;
+    }
+li
+{
+    list-style: none;
+    min-height: 50px;
+    border-top: 1px #CDCDCD dotted;
+    list-style-type: none;
+}
+
+li .bar
+{
+    background-color: #EBEFF9;
+    text-align:right;
+}
+.bar span
+{
+    margin-left:3px;
+    }
+.bar .user
+{
+    padding-left:10px;
+    text-align:left;
+    color: #008080;
+    font-weight: bold;
+    }
+.bar span .time
+{
+    float:right;
+    }
+    
+#RemarkContent
+{
+    overflow:auto;
+    margin-left:0px;
+    white-space:normal;
+    width:99%;
+    height:auto;
+    min-height:70px;
+    }
+    
+table
+{  
+    table-layout:fixed;
+    width:100%;
+    }
+.book table
+{
+    border:0px;
+    }
+
+.book td
+{
+    border:0px;
+}
+.behindBook
+{
+    margin-top:40px;
+    height:auto;
+    margin-bottom:10px;
+     }
+.behindBook td
+{
+    vertical-align:top;    
+    }
+.remark
+{
+    overflow: hidden;
+    white-space: normal;
+    word-wrap: break-all;
+    max-width: 70%;
+    width: 70%;
+}
+
+.remark .comment
+{
+    margin-top:20px;
+    }
+.topBar
+{
+    padding :1px 1px 1px 1px;
+    height : 25px;
+    border: #bfceff 1px solid;
+    font-weight: bold;
+    font-size:large;
+      /* Firefox 3.6 */  
+    background-image: -moz-linear-gradient(top, #ddecfb, #ffffff); 
+     /* Safari & Chrome */
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #ffffff),color-stop(1, #ddecfb));   
+     
+     /*IE*/
+    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ddecfb', endColorstr='#ffffff');
+}
+.remark p
+{
+    display:block;
+    clear:both;
+    }
+.buyers
+{
+    padding-top:3px;
+    padding-left:5px;
+}
+
+.buyers li
+{
+    padding-top:10px;
+    padding-left:5px;
+    }

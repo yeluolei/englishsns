@@ -58,8 +58,6 @@
                 
                 <li class="Menu3">
                     <%: Html.ActionLink("About", "About", "Home")%></li>
-                <li class="Menu2">
-                    <%: Html.ActionLink("LookUp", "index", "LookUp")%></li>
                 <li class="Menu1">
                     <%: Html.ActionLink("Home", "Index", "Home")%></li>
             </ul>
