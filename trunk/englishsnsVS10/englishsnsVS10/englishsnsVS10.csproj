@@ -94,6 +94,7 @@
     <Content Include="Content\homeindex.css" />
     <Content Include="Content\jquery-ui-1.8.2.custom.css" />
     <Content Include="Content\jquery.rating.css" />
+    <Content Include="Content\LookUpResult.css" />
     <Content Include="Content\SearchTitle.css" />
     <Content Include="Content\star.gif" />
     <Content Include="Content\UserCenter.css" />
