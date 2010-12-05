@@ -21,5 +21,18 @@
         <classShapeMoniker Id="4efa0428-6256-4b80-8175-b61cd22bd494" />
       </nodes>
     </associationConnector>
+    <classShape Id="2f71763d-1102-4760-b004-e0a126bf3a0d" absoluteBounds="0.75, 2.625, 2, 1.5715458170572916">
+      <DataClassMoniker Name="/englishdictDataContext/terms" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0163112d-d41d-41e8-9d0e-21e49f7a5e61" absoluteBounds="0.76499999999999968, 3.085, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 2.18950642903646); (1.75 : 2.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/englishdictDataContext/word/word_terms" />
+      <nodes>
+        <classShapeMoniker Id="6fa8a9e0-cbec-4088-9e18-dd35e35fc62c" />
+        <classShapeMoniker Id="2f71763d-1102-4760-b004-e0a126bf3a0d" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

@@ -17,5 +17,40 @@ namespace englishsnsVS10.Models
                      select exp.theExplanation;
            return qresult.ToList();
         }
+
+
+        public List<string> getSentence(string queryWord) {
+            var qresult = from term in db.terms
+                          where term.word.theWord == queryWord
+                          orderby term.id
+                          select term.sentence;
+            return qresult.ToList();
+        }
+        public List<string> getTranslate(string queryWord)
+        {
+            var qresult = from term in db.terms
+                          where term.word.theWord == queryWord
+                          orderby term.id
+                          select term.translate;
+            return qresult.ToList();
+        }
+        public List<int> getTermID(string queryWord)
+        {
+            var qresult = from term in db.terms
+                          where term.word.theWord == queryWord
+                          orderby term.id
+                          select term.id;
+            return qresult.ToList();
+        }
+
+        public terms getTermbyId(int id)
+        {
+            return db.terms.Single(d => d.id == id);
+        }
+
+        public void Save()
+        {
+            db.SubmitChanges();
+        }
     }
 }

@@ -35,4 +35,7 @@
     <%i++;}%>
       </tr>
       </table>
+    <div>
+        <%: Html.ActionLink("查看词条", "Index", "EditWords", new { queryWord = Model.queryWord }, new { })%>
+    </div>
 </asp:Content>
