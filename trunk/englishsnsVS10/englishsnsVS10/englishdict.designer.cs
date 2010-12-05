@@ -102,9 +102,9 @@ namespace englishsnsVS10
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _word_id;
+		private string _wordname;
 		
-		private string _theExplanation;
+		private string _expcontent;
 		
 		private int _id;
 		
@@ -114,10 +114,10 @@ namespace englishsnsVS10
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onword_idChanging(int value);
-    partial void Onword_idChanged();
-    partial void OntheExplanationChanging(string value);
-    partial void OntheExplanationChanged();
+    partial void OnwordnameChanging(string value);
+    partial void OnwordnameChanged();
+    partial void OnexpcontentChanging(string value);
+    partial void OnexpcontentChanged();
     partial void OnidChanging(int value);
     partial void OnidChanged();
     #endregion
@@ -128,46 +128,46 @@ namespace englishsnsVS10
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_word_id", DbType="Int NOT NULL")]
-		public int word_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wordname", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string wordname
 		{
 			get
 			{
-				return this._word_id;
+				return this._wordname;
 			}
 			set
 			{
-				if ((this._word_id != value))
+				if ((this._wordname != value))
 				{
 					if (this._word.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.Onword_idChanging(value);
+					this.OnwordnameChanging(value);
 					this.SendPropertyChanging();
-					this._word_id = value;
-					this.SendPropertyChanged("word_id");
-					this.Onword_idChanged();
+					this._wordname = value;
+					this.SendPropertyChanged("wordname");
+					this.OnwordnameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_theExplanation", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public string theExplanation
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_expcontent", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string expcontent
 		{
 			get
 			{
-				return this._theExplanation;
+				return this._expcontent;
 			}
 			set
 			{
-				if ((this._theExplanation != value))
+				if ((this._expcontent != value))
 				{
-					this.OntheExplanationChanging(value);
+					this.OnexpcontentChanging(value);
 					this.SendPropertyChanging();
-					this._theExplanation = value;
-					this.SendPropertyChanged("theExplanation");
-					this.OntheExplanationChanged();
+					this._expcontent = value;
+					this.SendPropertyChanged("expcontent");
+					this.OnexpcontentChanged();
 				}
 			}
 		}
@@ -192,7 +192,7 @@ namespace englishsnsVS10
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="word_explanation", Storage="_word", ThisKey="word_id", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="word_explanation", Storage="_word", ThisKey="wordname", OtherKey="wordname", IsForeignKey=true)]
 		public word word
 		{
 			get
@@ -215,11 +215,11 @@ namespace englishsnsVS10
 					if ((value != null))
 					{
 						value.explanations.Add(this);
-						this._word_id = value.id;
+						this._wordname = value.wordname;
 					}
 					else
 					{
-						this._word_id = default(int);
+						this._wordname = default(string);
 					}
 					this.SendPropertyChanged("word");
 				}
@@ -253,9 +253,7 @@ namespace englishsnsVS10
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _theWord;
-		
-		private int _id;
+		private string _wordname;
 		
 		private EntitySet<explanation> _explanations;
 		
@@ -265,10 +263,8 @@ namespace englishsnsVS10
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OntheWordChanging(string value);
-    partial void OntheWordChanged();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
+    partial void OnwordnameChanging(string value);
+    partial void OnwordnameChanged();
     #endregion
 		
 		public word()
@@ -278,47 +274,27 @@ namespace englishsnsVS10
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_theWord", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string theWord
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wordname", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string wordname
 		{
 			get
 			{
-				return this._theWord;
+				return this._wordname;
 			}
 			set
 			{
-				if ((this._theWord != value))
+				if ((this._wordname != value))
 				{
-					this.OntheWordChanging(value);
+					this.OnwordnameChanging(value);
 					this.SendPropertyChanging();
-					this._theWord = value;
-					this.SendPropertyChanged("theWord");
-					this.OntheWordChanged();
+					this._wordname = value;
+					this.SendPropertyChanged("wordname");
+					this.OnwordnameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="word_explanation", Storage="_explanations", ThisKey="id", OtherKey="word_id")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="word_explanation", Storage="_explanations", ThisKey="wordname", OtherKey="wordname")]
 		public EntitySet<explanation> explanations
 		{
 			get

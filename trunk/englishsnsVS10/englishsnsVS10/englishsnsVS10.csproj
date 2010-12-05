@@ -67,10 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\EditWordsController.cs" />
+    <Compile Include="Controllers\DictGenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LookUpController.cs" />
-    <Compile Include="Models\EditWordResult.cs" />
     <Compile Include="Models\LookUpWordResult.cs" />
     <Compile Include="englishdict.designer.cs">
       <AutoGen>True</AutoGen>
@@ -101,8 +100,6 @@
     <Content Include="Content\star.gif" />
     <Content Include="Content\UserCenter.css" />
     <Content Include="Global.asax" />
-    <Content Include="Views\EditWords\Edit.aspx" />
-    <Content Include="Views\EditWords\Index.aspx" />
     <Content Include="Views\LookUp\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
