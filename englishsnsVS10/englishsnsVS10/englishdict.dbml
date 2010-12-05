@@ -2,27 +2,16 @@
   <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\englishdict.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="englishdictConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.explanations" Member="explanations">
     <Type Name="explanation">
-      <Column Name="word_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="theExplanation" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="wordname" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="expcontent" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="word_explanation" Member="word" ThisKey="word_id" OtherKey="id" Type="word" IsForeignKey="true" />
+      <Association Name="word_explanation" Member="word" ThisKey="wordname" OtherKey="wordname" Type="word" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.words" Member="words">
     <Type Name="word">
-      <Column Name="theWord" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="word_explanation" Member="explanations" ThisKey="id" OtherKey="word_id" Type="explanation" />
-      <Association Name="word_terms" Member="terms" ThisKey="id" OtherKey="word_id" Type="terms" />
-    </Type>
-  </Table>
-  <Table Name="dbo.terms" Member="terms">
-    <Type Name="terms">
-      <Column Name="word_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="sentence" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="translate" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="word_terms" Member="word" ThisKey="word_id" OtherKey="id" Type="word" IsForeignKey="true" />
+      <Column Name="wordname" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="word_explanation" Member="explanations" ThisKey="wordname" OtherKey="wordname" Type="explanation" />
     </Type>
   </Table>
 </Database>
