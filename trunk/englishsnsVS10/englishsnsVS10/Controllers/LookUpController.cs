@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using englishsnsVS10.Models;
+using englishsnsVS10.DAO;
 using System.Text.RegularExpressions;
 namespace englishsnsVS10.Controllers
 {
@@ -11,7 +12,7 @@ namespace englishsnsVS10.Controllers
     {
         //
         // GET: /LookUp/
-        private EnglishDictRepo dictRepo = new EnglishDictRepo();
+        private IEnglishDictRepo dictRepo = new englishsnsVS10.DAOimpl.EnglishDictRepo();
         public ActionResult Index()
         {
             return View();

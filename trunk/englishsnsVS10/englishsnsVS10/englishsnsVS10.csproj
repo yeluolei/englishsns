@@ -70,8 +70,9 @@
     <Compile Include="Controllers\DictGenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LookUpController.cs" />
+    <Compile Include="SystemInterfaces\IEnglishDictRepo.cs" />
     <Compile Include="Models\LookUpWordResult.cs" />
-    <Compile Include="englishdict.designer.cs">
+    <Compile Include="datacontext\englishdict.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>englishdict.dbml</DependentUpon>
@@ -80,7 +81,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\EnglishDictRepo.cs" />
+    <Compile Include="DAOimpl\EnglishDictRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -134,7 +135,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="englishdict.dbml">
+    <None Include="datacontext\englishdict.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>englishdict.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
@@ -144,7 +145,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="englishdict.dbml.layout">
+    <None Include="datacontext\englishdict.dbml.layout">
       <DependentUpon>englishdict.dbml</DependentUpon>
     </None>
   </ItemGroup>

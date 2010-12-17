@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Xml;
 using System.Text.RegularExpressions;
 using englishsnsVS10.Models;
+using englishsnsVS10.DAO;
 using System.IO;
 namespace englishsnsVS10.Controllers
 {
