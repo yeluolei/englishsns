@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="englishdict">
+  <DataContextMoniker Name="/englishdictDataContext" />
+  <nestedChildShapes>
+    <classShape Id="680186f2-0986-48a1-9bab-8554bda17f58" absoluteBounds="0.75, 1.125, 2, 1.0016910807291666">
+      <DataClassMoniker Name="/englishdictDataContext/word" />
+      <nestedChildShapes>
+        <elementListCompartment Id="accbc284-677b-4176-8138-3bfcd31289e8" absoluteBounds="0.765, 1.585, 1.9700000000000002, 0.44169108072916669" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2543969b-d8db-4045-b362-0f74f7987aa9" absoluteBounds="3.5, 0.875, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/englishdictDataContext/explanation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e2fa2382-30c0-4563-b23c-892f2f0563d6" absoluteBounds="3.515, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.62584554036458); (3.5 : 1.62584554036458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/englishdictDataContext/word/word_explanation" />
+      <nodes>
+        <classShapeMoniker Id="680186f2-0986-48a1-9bab-8554bda17f58" />
+        <classShapeMoniker Id="2543969b-d8db-4045-b362-0f74f7987aa9" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

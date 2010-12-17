@@ -37,11 +37,11 @@
                }
            else
            {%>
-            <%:"Sorry, the word is not in our database now." %>
+            <p>Sorry, the word is not in our database now.</p>
             <%} %>
         </tr>
     </table>
-    <div>
+<%--    <div>
         <%: Html.ActionLink("查看词条", "Index", "EditWords", new { queryWord = Model.queryWord }, new { })%>
-    </div>
+    </div>--%>
 </asp:Content>
