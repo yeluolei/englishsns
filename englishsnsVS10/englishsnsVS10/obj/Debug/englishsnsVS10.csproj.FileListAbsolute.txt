@@ -1,0 +1,6 @@
+E:\Project\EnglishSNS\englishsnsVS10\englishsnsVS10\bin\englishsnsVS10.dll
+E:\Project\EnglishSNS\englishsnsVS10\englishsnsVS10\bin\englishsnsVS10.pdb
+E:\Project\EnglishSNS\englishsnsVS10\englishsnsVS10\obj\Debug\ResolveAssemblyReference.cache
+E:\Project\EnglishSNS\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.dll
+E:\Project\EnglishSNS\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.pdb
+E:\Project\EnglishSNS\englishsnsVS10\englishsnsVS10\bin\Bing.dll

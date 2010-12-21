@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using englishsnsVS10.DAO;
+using englishsnsVS10.datacontext;
 namespace englishsnsVS10.DAOimpl
 {
     public class EnglishDictRepo : englishsnsVS10.DAO.IEnglishDictRepo 
