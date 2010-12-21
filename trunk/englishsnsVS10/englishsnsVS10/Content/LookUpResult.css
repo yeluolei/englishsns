@@ -1,0 +1,26 @@
+﻿.WordResult
+{
+    border-width: 0px;
+    border: 0px;
+    height: 20px;
+}
+table
+{
+    height: 30px;
+    }
+table td
+{
+    border: 0px;
+    padding: 0px;
+}
+table td.number
+{
+    font-size: 1.2em;
+    color: #009AD9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+table td p
+{
+    line-height: 1.0em;
+    margin: 7px;
+    }

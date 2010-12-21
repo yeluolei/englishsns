@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using englishsnsVS10.Models;
 using englishsnsVS10.DAO;
 using System.IO;
+using englishsnsVS10.datacontext;
 namespace englishsnsVS10.Controllers
 {
     public class DictGenController : Controller
@@ -45,7 +46,6 @@ namespace englishsnsVS10.Controllers
                     catch (System.Exception ex)
                     {
                     	db = new englishdictDataContext();
-                        
                     }
                     
                 }
