@@ -74,6 +74,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LookUpController.cs" />
     <Compile Include="Controllers\TranslationController.cs" />
+    <Compile Include="datacontext\CustomerInfo.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerInfo.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\SentenceModels.cs" />
     <Compile Include="SystemInterfaces\IEnglishDictRepo.cs" />
     <Compile Include="Models\LookUpWordResult.cs" />
@@ -142,8 +147,17 @@
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <None Include="datacontext\CustomerInfo.dbml.layout">
+      <DependentUpon>CustomerInfo.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="datacontext\CustomerInfo.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>CustomerInfo.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="datacontext\englishdict.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>englishdict.designer.cs</LastGenOutput>
