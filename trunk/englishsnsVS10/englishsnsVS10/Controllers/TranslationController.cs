@@ -10,8 +10,8 @@ namespace englishsnsVS10.Controllers
 {
     public class TranslationController : Controller
     {
-        ITranslateBoundary googletranslate = new GoogleTranslateBoundary();
-        ITranslateBoundary bingtranslate = new BingTranslateBoundary();
+        ITranslateBoundary googletranslate = new GoogleTranslateAdapter();
+        ITranslateBoundary bingtranslate = new BingTranslateAdapter();
         //
         // GET: /Translation/
         [AcceptVerbs(HttpVerbs.Post)]

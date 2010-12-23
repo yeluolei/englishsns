@@ -6,13 +6,13 @@ using Bing;
 
 namespace englishsnsVS10.Translate
 {
-    public class BingTranslateBoundary : ITranslateBoundary
+    public class BingTranslateBoundary 
     {
-        public string requestTranslate(string SentenceEncode, string type)
+        public string GetTranslateResult(string RequestSentence, string LanguageType)
         {
             String url = String.Empty;
             String source, target;
-            if (type.Equals("EN_ZH"))
+            if (LanguageType.Equals("EN_ZH"))
             {
                 source = "En";
                 target = "zh-CHS";
@@ -24,7 +24,7 @@ namespace englishsnsVS10.Translate
             }
             String result;
             SearchRequest searchRequest = new SearchRequest() {
-                AppId = "B692A148D1624C4E3C1248C8E5DDC209E524D2C4", Query = SentenceEncode, Market = "en-US" 
+                AppId = "B692A148D1624C4E3C1248C8E5DDC209E524D2C4", Query = RequestSentence, Market = "en-US" 
             }; 
 	  
 	        TranslationRequest translationRequest = new TranslationRequest();  

@@ -6,24 +6,28 @@ using System.Web.Mvc;
 using System.Net;
 using System.IO;
 using System.Web.Script.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Runtime.Serialization;
+using System.ServiceModel.Web;
+using System.Text;
 
 namespace englishsnsVS10.Translate
 {
-    public class GoogleTranslateBoundary : englishsnsVS10.Translate.ITranslateBoundary
+    public class GoogleTranslateBoundary
     {
-        public String requestTranslate(String SentenceEncode,String type){
-            SentenceEncode = SentenceEncode.Replace(" ", "%20");
+        public String HandleTranslate(String SentenceIn, String TranslateType)
+        {
+            SentenceIn = SentenceIn.Replace(" ", "%20");
             String url = String.Empty;
-            if (type.Equals("EN_ZH"))
+            if (TranslateType.Equals("EN_ZH"))
             {
                 url = String.Concat("https://www.googleapis.com/language/translate/v2?",
-               "key=AIzaSyDdJRYhl1gCLRlJLymM20V1IwCBP9Vi58E&format=html&source=en&target=zh-CN&q=", SentenceEncode);
+               "key=AIzaSyDdJRYhl1gCLRlJLymM20V1IwCBP9Vi58E&format=html&source=en&target=zh-CN&q=", SentenceIn);
             }
             else 
             {
                 url = String.Concat("https://www.googleapis.com/language/translate/v2?",
-               "key=AIzaSyDdJRYhl1gCLRlJLymM20V1IwCBP9Vi58E&format=html&source=zh-CN&target=en&q=", SentenceEncode);
+               "key=AIzaSyDdJRYhl1gCLRlJLymM20V1IwCBP9Vi58E&format=html&source=zh-CN&target=en&q=", SentenceIn);
             }
             String result = String.Empty;
             HttpWebRequest request = null;
@@ -44,6 +48,13 @@ namespace englishsnsVS10.Translate
 
         private String ProcessResult(String resultBefo)
         {
+            //DataContractJsonSerializer Serialization = new DataContractJsonSerializer(typeof(GoogleTranslateData));
+            //MemoryStream mstream = new MemoryStream(Encoding.Default.GetBytes(resultBefo));
+
+            //GoogleTranslateData result = (GoogleTranslateData)Serialization.ReadObject(mstream);
+
+            //return result.data.translations[0].translatedText;
+
             String result;
             String Temp;
             Temp = resultBefo.Substring(0, resultBefo.LastIndexOf('\"'));
@@ -54,3 +65,26 @@ namespace englishsnsVS10.Translate
 
 
 }
+
+//[DataContract(Namespace ="localhost:7001")]
+//class GoogleTranslateData
+//{
+//    [DataMember(Order = 0)]
+//    public GoogleTranslations data { get; set; }
+//}
+
+//[DataContract(Namespace = "localhost:7001")]
+//class GoogleTranslations
+//{
+//    [DataMember(Order = 0)]
+//    public TranslateResult[] translations{get;set;}
+//}
+
+//[DataContract(Namespace="localhost:7001")]
+//class TranslateResult
+//{
+//    [DataMember(Order = 0)]
+//   public String translatedText{get;set;}
+//    //[DataMember(Order=1)]
+//    //public String detectedSourceLanguage{get;set;}
+//}

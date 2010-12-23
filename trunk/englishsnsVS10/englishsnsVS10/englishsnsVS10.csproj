@@ -41,6 +41,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -74,12 +76,16 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LookUpController.cs" />
     <Compile Include="Controllers\TranslationController.cs" />
+    <Compile Include="DAOimpl\CustomerInfoRepo.cs" />
     <Compile Include="datacontext\CustomerInfo.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomerInfo.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CommentModels.cs" />
     <Compile Include="Models\SentenceModels.cs" />
+    <Compile Include="Models\ShareModels.cs" />
+    <Compile Include="Models\UserModels.cs" />
     <Compile Include="SystemInterfaces\IEnglishDictRepo.cs" />
     <Compile Include="Models\LookUpWordResult.cs" />
     <Compile Include="datacontext\englishdict.designer.cs">
@@ -93,7 +99,9 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="DAOimpl\EnglishDictRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Translate\BingTranslateAdapter.cs" />
     <Compile Include="Translate\BingTranslateBoundary.cs" />
+    <Compile Include="Translate\GoogleTranslateAdapter.cs" />
     <Compile Include="Translate\ITranslateBoundary.cs" />
     <Compile Include="Translate\GoogleTranslateBoundary.cs" />
   </ItemGroup>
