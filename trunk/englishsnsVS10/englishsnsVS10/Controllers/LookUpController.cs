@@ -6,13 +6,14 @@ using System.Web.Mvc;
 using englishsnsVS10.Models;
 using englishsnsVS10.DAO;
 using System.Text.RegularExpressions;
+using englishsnsVS10.DAOimpl;
 namespace englishsnsVS10.Controllers
 {
     public class LookUpController : Controller
     {
         //
         // GET: /LookUp/
-        private IEnglishDictRepo dictRepo = new englishsnsVS10.DAOimpl.EnglishDictRepo();
+        private EnglishDictRepo dictRepo = EnglishDictRepoFactory.getInstance();
         public ActionResult Index()
         {
             return View();
