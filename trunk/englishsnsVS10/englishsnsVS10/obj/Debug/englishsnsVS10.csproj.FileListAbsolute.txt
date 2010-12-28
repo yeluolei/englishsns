@@ -9,3 +9,9 @@ E:\Project\EnglishSNS\englishsnsVS10\englishsnsVS10\bin\Bing.dll
 E:\Project\EnglishSNS\englishsnsVS10\englishsnsVS10\obj\Debug\ResolveAssemblyReference.cache
 E:\Project\EnglishSNS\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.dll
 E:\Project\EnglishSNS\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.pdb
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\ResolveAssemblyReference.cache
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.dll
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.pdb
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\englishsnsVS10.dll
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\englishsnsVS10.pdb
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\Bing.dll

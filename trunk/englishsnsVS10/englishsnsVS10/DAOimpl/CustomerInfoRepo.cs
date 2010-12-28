@@ -40,15 +40,15 @@ namespace englishsnsVS10.DAOimpl
             throw new System.NotImplementedException();
         }
 
-        /// <summary>
-        /// 这里只返回一个
-        /// </summary>
-        /// <param name="shareId"></param>
-        /// <returns></returns>
-        public IQueryable<ShareModels> getshares(int shareId)
-        {
-            throw new System.NotImplementedException();
-        }
+//         /// <summary>
+//         /// 这里只返回一个
+//         /// </summary>
+//         /// <param name="shareId"></param>
+//         /// <returns></returns>
+//         public IQueryable<ShareModels> getshares(int shareId)
+//         {
+//             throw new System.NotImplementedException();
+//         }
 
         public IQueryable<UserModels> getfollowers(int userId)
         {
