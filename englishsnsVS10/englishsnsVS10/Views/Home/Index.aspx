@@ -4,6 +4,7 @@
     Home Page
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<h2><%= Html.Encode(ViewData["Message"]) %></h2>
     <h2>
         欢迎来到英语学习社区</h2>
     <% using (Html.BeginForm("getTranslate", "Translation", FormMethod.Post))

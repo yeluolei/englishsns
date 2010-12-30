@@ -9,9 +9,14 @@ namespace englishsnsVS10.Controllers
     [HandleError]
     public class HomeController : Controller
     {
+        string Message
+        {
+            get;
+            set;
+        }
         public ActionResult Index()
         {
-            ViewData["Message"] = "Welcome to ASP.NET MVC!";
+            ViewData["Message"] = Message;
 
             return View();
         }
