@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+
+  <object type="englishsnsVS10.Controllers.HomeController, englishsnsVS10" singleton="false" >
+    <property name="Message" value="Welcome to ASP.NET MVC powered by Spring.NET!" />
+  </object>
+
+    <object type="englishsnsVS10.Controllers.LookUpController, englishsnsVS10" singleton="false" >
+   
+    </object>
+
+  <!--intentionally do NOT register the AccountController with the container; demonstrates that the underlying
+  default controller factory will properly (attempt to!) resolve all controllers not registered with Spring.NET
+  using its default controller resolution behavoir-->
+  <object type="englishsnsVS10.Controllers.AccountController, englishsnsVS10" singleton="false" />
+</objects>
