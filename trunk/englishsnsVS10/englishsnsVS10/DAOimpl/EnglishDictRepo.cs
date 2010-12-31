@@ -7,16 +7,13 @@ using englishsnsVS10.datacontext;
 
 namespace englishsnsVS10.DAOimpl
 {
-    public class EnglishDictRepo : englishsnsVS10.DAO.IEnglishDictRepo 
+    public class EnglishDictRepo /* : englishsnsVS10.DAO.IEnglishDictRepo */
     {   
         private englishdictDataContext db = new englishdictDataContext();
-        public IQueryable<String> getExplanations(String queryWord) {
-//             var qresult = from wd in db.words
-//                     where wd.theWord == queryWord
-//                     select wd.explanations.;
+        public IQueryable<explanation> getExplanations(String queryWord) {
             var qresult = from exp in db.explanations
                           where exp.wordname == queryWord
-                          select exp.expcontent;
+                          select exp;
            return qresult;
         }
 

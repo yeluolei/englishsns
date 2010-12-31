@@ -22,7 +22,7 @@ namespace englishsnsVS10.datacontext
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="englishdict")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ENGLISHDICT.MDF")]
 	public partial class englishdictDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -39,7 +39,7 @@ namespace englishsnsVS10.datacontext
     #endregion
 		
 		public englishdictDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["englishdictConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ENGLISHDICT_MDFConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

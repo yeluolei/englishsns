@@ -11,7 +11,7 @@ namespace englishsnsVS10.DAOimpl
     {
         private CustomerInfoDataContext db = new CustomerInfoDataContext();
 
-        public IQueryable<users> GetCustomer(string account)
+        public IQueryable<user> GetCustomer(string account)
         {
            
             return from user in db.users
@@ -19,7 +19,7 @@ namespace englishsnsVS10.DAOimpl
                    select user;
         }
 
-        public void AddCustomer(users user)
+        public void AddCustomer(user user)
         {
             db.users.InsertOnSubmit(user);
         }

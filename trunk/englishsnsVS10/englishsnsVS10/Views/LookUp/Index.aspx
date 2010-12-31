@@ -18,10 +18,10 @@
     <h2>
         <%=Html.Label(Model.queryWord) %></h2>
     <table class="WordResult">
-        <% List<String> result = Model.explanations;
+        <% var result = Model.explanations;
            int i = 1;
-           if (result != null)
-               foreach (String s in result)
+           if (result!=null)
+               foreach (var exp in result)
                {
         %>
         <tr>
@@ -30,14 +30,18 @@
             </td>
             <td>
                 <p>
-                    <%=s%>
+                    <%=Html.Encode(exp.expcontent)%>
                 </p>
+                
+                <h1>ID:</h1>
+                <%=exp.id.ToString() %>
+                
             </td>
             <%    i++;
                }
            else
            {%>
-            <p>Sorry, the word is not in our database now.</p>
+            Sorry, the word is not in our database now.
             <%} %>
         </tr>
     </table>
