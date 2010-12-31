@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using englishsnsVS10.Models;
+using englishsnsVS10.datacontext;
+using englishsnsVS10.DAOimpl;
 
 namespace englishsnsVS10.Controllers
 {
@@ -15,9 +17,10 @@ namespace englishsnsVS10.Controllers
     [HandleError]
     public class AccountController : Controller
     {
-
+        public CustomerInfoRepo customerInfoRepo { get; set; }
         public IFormsAuthenticationService FormsService { get; set; }
         public IMembershipService MembershipService { get; set; }
+
 
         protected override void Initialize(RequestContext requestContext)
         {
@@ -33,34 +36,47 @@ namespace englishsnsVS10.Controllers
 
         public ActionResult LogOn()
         {
-            return View();
+            //return View();
+            return Redirect("http://jaccount.sjtu.in/index.php?reurl=http://localhost:5596/account/logon");
         }
 
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
-            {
-                if (MembershipService.ValidateUser(model.UserName, model.Password))
-                {
-                    FormsService.SignIn(model.UserName, model.RememberMe);
-                    if (!String.IsNullOrEmpty(returnUrl))
-                    {
-                        return Redirect(returnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                }
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    if (MembershipService.ValidateUser(model.UserName, model.Password))
+            //    {
+            //        FormsService.SignIn(model.UserName, model.RememberMe);
+            //        if (!String.IsNullOrEmpty(returnUrl))
+            //        {
+            //            return Redirect(returnUrl);
+            //        }
+            //        else
+            //        {
+            //            return RedirectToAction("Index", "Home");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            //    }
+            //}
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            //// If we got this far, something failed, redisplay form
+            //return View(model);
+
+
+            if (customerInfoRepo.GetCustomer(model.uid).Count() == 0)
+            {
+                users user = new users();
+                user.username = model.uid;
+                user.name = model.chinesename;
+                customerInfoRepo.AddCustomer(user);
+                customerInfoRepo.save();
+            }
+            FormsService.SignIn(model.uid, false);
+            return RedirectToAction("Index", "Home");
         }
 
         // **************************************

@@ -11,6 +11,18 @@ namespace englishsnsVS10.DAOimpl
     {
         private CustomerInfoDataContext db = new CustomerInfoDataContext();
 
+        public IQueryable<users> GetCustomer(string account)
+        {
+           
+            return from user in db.users
+                   where user.username == account
+                   select user;
+        }
+
+        public void AddCustomer(users user)
+        {
+            db.users.InsertOnSubmit(user);
+        }
         public void addcoments(CommentModels comment)
         {
 
