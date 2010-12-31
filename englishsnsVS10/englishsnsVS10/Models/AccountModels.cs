@@ -34,11 +34,19 @@ namespace englishsnsVS10.Models
 
     public class LogOnModel
     {
-        [Required]
+        
         [DisplayName("User name")]
         public string UserName { get; set; }
 
         [Required]
+        [DisplayName("User name")]
+        public string uid { get; set; }
+
+        
+        [DisplayName("User name")]
+        public string chinesename { get; set; }
+
+        
         [DataType(DataType.Password)]
         [DisplayName("Password")]
         public string Password { get; set; }

@@ -102,6 +102,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomerInfo.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Login\LoginSys.cs" />
     <Compile Include="Models\CommentModels.cs" />
     <Compile Include="Models\SentenceModels.cs" />
     <Compile Include="Models\ShareModels.cs" />
@@ -201,6 +202,7 @@
       <DependentUpon>englishdict.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -216,7 +218,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2324</DevelopmentServerPort>
+          <DevelopmentServerPort>5596</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
