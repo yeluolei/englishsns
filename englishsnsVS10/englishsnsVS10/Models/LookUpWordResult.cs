@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using englishsnsVS10.datacontext;
 namespace englishsnsVS10.Models
 {
     public class LookUpWordResult
     {
-        public LookUpWordResult(String _word,List<String> _exps) {
-            queryWord = _word;
-            explanations = _exps;
+        public LookUpWordResult(string _word, IQueryable<explanation> exps)
+        {
+            this.explanations = exps;
+            this.queryWord = _word;
         }
-        public List<String> explanations
+        public IQueryable<explanation> explanations
         {
             get;
             private set;

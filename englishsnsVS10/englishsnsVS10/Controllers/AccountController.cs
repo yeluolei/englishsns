@@ -69,7 +69,7 @@ namespace englishsnsVS10.Controllers
 
             if (customerInfoRepo.GetCustomer(model.uid).Count() == 0)
             {
-                users user = new users();
+                user user = new user();
                 user.username = model.uid;
                 user.name = model.chinesename;
                 customerInfoRepo.AddCustomer(user);

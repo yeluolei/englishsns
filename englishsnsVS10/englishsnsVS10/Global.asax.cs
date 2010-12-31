@@ -93,7 +93,6 @@ namespace englishsnsVS10
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-
         }
 
         protected override void Application_Start(object sender, EventArgs e)

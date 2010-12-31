@@ -30,20 +30,23 @@ namespace englishsnsVS10.Controllers
                 for (int i = 0; i < 100000; i++)
                 {
                     String key = sr.ReadLine();
-                    String exp = sr.ReadLine();
-                    if (key==null) break;
+                    String expline = sr.ReadLine();
                     word newWord = new word();
                     newWord.wordname = key;
-                    explanation newexp = new explanation();
-                    newexp.expcontent = exp;
-                    newWord.explanations.Add(newexp);
                     db.words.InsertOnSubmit(newWord);
-                    db.explanations.InsertOnSubmit(newexp);
+                    foreach (String exp in new Regex(@"\s+\d+\s+").Split(expline))
+                    {
+                        if (key == null) break;
+                        explanation newexp = new explanation();
+                        newexp.expcontent = exp;
+                        newWord.explanations.Add(newexp);
+                        db.explanations.InsertOnSubmit(newexp);
+                    }
                     try
                     {
                         db.SubmitChanges();
                     }
-                    catch (System.Exception ex)
+                    catch (System.Exception )
                     {
                     	db = new englishdictDataContext();
                     }

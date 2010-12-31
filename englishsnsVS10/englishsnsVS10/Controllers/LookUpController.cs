@@ -22,17 +22,7 @@ namespace englishsnsVS10.Controllers
         public ActionResult Index(string queryWord)
         {
             var exps = dictRepo.getExplanations(queryWord);
-            String[] splittedexps = new String[1];
-
-            if (exps.Count() == 0)
-                splittedexps = null;
-            else
-                foreach (string s in exps)
-                {
-                    Regex rx = new Regex(@"\s+\d+\s+");
-                    splittedexps = rx.Split(s);
-                }
-            LookUpWordResult result = new LookUpWordResult(queryWord, splittedexps==null?null:splittedexps.ToList());
+            LookUpWordResult result = new LookUpWordResult(queryWord,exps);
             return View(result);
         }
     }
