@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\DictGenController.cs" />
     <Compile Include="Controllers\FollowController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -147,10 +148,13 @@
     <Content Include="Content\star.gif" />
     <Content Include="Content\UserCenter.css" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Comment\GetComments.aspx" />
+    <Content Include="Views\Comment\Index.aspx" />
     <Content Include="Views\Follow\Index.aspx" />
     <Content Include="Views\LookUp\Index.aspx" />
     <Content Include="Views\Share\Index.aspx" />
     <Content Include="Views\Translation\getTranslate.aspx" />
+    <Content Include="Views\Translation\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

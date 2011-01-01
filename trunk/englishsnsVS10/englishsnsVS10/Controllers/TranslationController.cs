@@ -14,14 +14,18 @@ namespace englishsnsVS10.Controllers
         ITranslateBoundary bingtranslate = new BingTranslateAdapter();
         //
         // GET: /Translation/
+        public ActionResult Index()
+        {
+            return View();
+        }
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult getTranslate(String Sentence, String languagechoose)
         {
             String source = Sentence;
             Sentence = Sentence.Trim();
-            String googletranslateresult = googletranslate.requestTranslate(Sentence,languagechoose);
+            String googletranslateresult = googletranslate.requestTranslate(Sentence, languagechoose);
             String bingtranslateresult = bingtranslate.requestTranslate(Sentence, languagechoose);
-            SentenceModels result = new SentenceModels(source,googletranslateresult,bingtranslateresult);
+            SentenceModels result = new SentenceModels(source, googletranslateresult, bingtranslateresult);
             return View(result);
         }
 
