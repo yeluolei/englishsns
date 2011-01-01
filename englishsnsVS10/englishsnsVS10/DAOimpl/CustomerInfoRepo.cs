@@ -44,9 +44,11 @@ namespace englishsnsVS10.DAOimpl
             throw new System.NotImplementedException();
         }
 
-        public IQueryable<CommentModels> getcoments(int shareId)
+        public IQueryable<comment> getcoments(int shareId)
         {
-            throw new System.NotImplementedException();
+            return from c in db.comments
+                   where c.shareid == shareId
+                   select c;
         }
 
         public IQueryable<CommentModels> getcoments()

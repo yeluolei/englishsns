@@ -40,7 +40,7 @@
             </div>
             <div class="search">
                 <div class="searchboxbar">
-                    <% using (Html.BeginForm("index", "lookup",FormMethod.Post))
+                    <% using (Html.BeginForm("index", "lookup", FormMethod.Post))
                        { %>
                     <div class="searchbox">
                         <span class="bo"><span class="bi">
@@ -49,13 +49,13 @@
                         </span></span>
                     </div>
                     <% } %>
-                    
                 </div>
             </div>
         </div>
         <div class="MenuPage">
             <ul id="menu">
-                
+                <li class="Menu1">
+                    <%: Html.ActionLink("整句翻译", "Index", "Translation")%></li>
                 <li class="Menu3">
                     <%: Html.ActionLink("About", "About", "Home")%></li>
                 <li class="Menu1">
@@ -74,8 +74,8 @@
                 </center>
                 <center>
                     <div class="copyright">
-                    <br />
-                            © 2010 EnglishSNS
+                        <br />
+                        © 2010 EnglishSNS
                     </div>
                 </center>
             </div>

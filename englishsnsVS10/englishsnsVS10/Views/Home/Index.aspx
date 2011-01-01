@@ -8,36 +8,42 @@
         <%= Html.Encode(ViewData["Message"]) %></h2>
     <h2>
         欢迎来到英语学习社区</h2>
-    <% using (Html.BeginForm("getTranslate", "Translation", FormMethod.Post))
-       { %>
-    <p>
-        <input class="editor-field" size="69" maxlength="250" name="Sentence" type="text" /></p>
-    <p>
-        <input name="languagechoose" type="radio" value="ZH_EN" />中文->英文</p>
-    <p>
-        <input name="languagechoose" type="radio" value="EN_ZH" checked="true" />英文->中文</p>
-    <input title="Search" value="整句翻译" type="submit" />
-    <% } %>
-    <%if(Request.IsAuthenticated){ %>
+    <%if (Request.IsAuthenticated)
+      { %>
     <table>
-        <%for (int i = 0; i < Model.Count;++i )
-        {
-            int cnt = 0;
-            foreach(var temp in Model[i].shares){%>
+        <%for (int i = 0; i < Model.Count; ++i)
+          {
+              int cnt = 0;
+              foreach (var temp in Model[i].shares)
+              {%>
         <tr>
             <td>
-                <%:Html.Encode(Model[i].userName[cnt]) %>
+                <%:Html.Encode(Model[i].userName[cnt]) %>分享了
             </td>
             <td>
-                <%:Html.Encode(temp.sharecontent) %>>
+                <%:Html.Encode(Model[i].explanations[cnt].wordname)%>
             </td>
             <td>
-                 <%:Html.Encode(Model[i].explanations[cnt].expcontent) %>>   
+            &nbsp
             </td>
         </tr>
-            <%++cnt;
-            }
-       } %>
+        <tr>
+        <td>
+        &nbsp
+        </td>
+            <td>
+                <%:Html.Encode(Model[i].explanations[cnt].expcontent) %>
+                 <div style="margin-top: 20px">评论：<br /><%:Html.Encode(temp.sharecontent) %></div>
+                 <div style="margin-top: 20px"><%:Html.ActionLink("我要评论", "Index", "Comment", new { id = temp.id }, new { })%></div>
+                 <div style="margin-top: 20px"><%:Html.ActionLink("查看评论", "GetComments", "Comment", new { id = temp.id }, new { })%></div>
+            </td>
+            <td>
+               &nbsp   
+            </td>
+        </tr>
+        <%++cnt;
+              }
+          } %>
     </table>
     <%} %>>
 </asp:Content>
