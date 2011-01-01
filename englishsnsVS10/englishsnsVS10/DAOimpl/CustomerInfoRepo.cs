@@ -19,14 +19,21 @@ namespace englishsnsVS10.DAOimpl
                    select user;
         }
 
+        public user GetCustomer(int ID)
+        {
+            return db.users.SingleOrDefault(d => d.id == ID);
+        }
+
         public void AddCustomer(user user)
         {
             db.users.InsertOnSubmit(user);
         }
+
         public void addcoments(CommentModels comment)
         {
 
         }
+
         public void addshare(ShareModels share)
         {
 
@@ -47,9 +54,11 @@ namespace englishsnsVS10.DAOimpl
             throw new System.NotImplementedException();
         }
 
-        public IQueryable<ShareModels> getshares(int userId)
+        public IQueryable<share> getshares(int userId)
         {
-            throw new System.NotImplementedException();
+            return from s in db.shares
+                   where s.userid == userId
+                   select s;
         }
 
 //         /// <summary>
@@ -62,12 +71,26 @@ namespace englishsnsVS10.DAOimpl
 //             throw new System.NotImplementedException();
 //         }
 
-        public IQueryable<UserModels> getfollowers(int userId)
-        {
-            throw new System.NotImplementedException();
-        }
+        //public IQueryable<UserModels> getfollowers(int userId)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
-        
+        public IQueryable<follower> GetFollowedPeople(user customer)
+        {
+            return from follow in db.followers
+                   where follow.follower1 == customer.id
+                   select follow;
+        }
+        public void AddFollower(string userid, string followerId)
+        {
+            var temp = GetCustomer(followerId);
+            var temp2 = GetCustomer(userid);
+            follower followerInstance = new follower();
+            followerInstance.follower1 = temp.First().id;
+            followerInstance.userid = temp2.First().id;
+            db.followers.InsertOnSubmit(followerInstance);
+        }
 
         /// <summary>
         /// Save data to the database

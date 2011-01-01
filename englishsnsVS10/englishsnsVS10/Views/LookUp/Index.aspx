@@ -17,12 +17,14 @@
     <!--     </div> -->
     <h2>
         <%=Html.Label(Model.queryWord) %></h2>
+    <% var result = Model.explanations;
+       int i = 1;
+       if (result != null)
+       {%>
     <table class="WordResult">
-        <% var result = Model.explanations;
-           int i = 1;
-           if (result!=null)
-               foreach (var exp in result)
-               {
+        <%
+            foreach (var exp in result)
+            {
         %>
         <tr>
             <td class="number">
@@ -32,20 +34,20 @@
                 <p>
                     <%=Html.Encode(exp.expcontent)%>
                 </p>
-                
-                <h1>ID:</h1>
-                <%=exp.id.ToString() %>
-                
             </td>
-            <%    i++;
-               }
+            <td>
+                <%:Html.ActionLink("分享", "Index", "Share", new { id = exp.id.ToString() }, new { })%>>
+            </td>
+        </tr>
+        <%    i++;
+} %>
+    </table>
+    <%}
            else
            {%>
-            Sorry, the word is not in our database now.
-            <%} %>
-        </tr>
-    </table>
-<%--    <div>
+    Sorry, the word is not in our database now.
+    <%} %>
+    <%--    <div>
         <%: Html.ActionLink("查看词条", "Index", "EditWords", new { queryWord = Model.queryWord }, new { })%>
     </div>--%>
 </asp:Content>

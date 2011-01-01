@@ -22,7 +22,7 @@ namespace englishsnsVS10.datacontext
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ENGLISHDICT.MDF")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="englishdict")]
 	public partial class CustomerInfoDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -36,16 +36,16 @@ namespace englishsnsVS10.datacontext
     partial void Insertfollower(follower instance);
     partial void Updatefollower(follower instance);
     partial void Deletefollower(follower instance);
-    partial void Insertshare(share instance);
-    partial void Updateshare(share instance);
-    partial void Deleteshare(share instance);
     partial void Insertuser(user instance);
     partial void Updateuser(user instance);
     partial void Deleteuser(user instance);
+    partial void Insertshare(share instance);
+    partial void Updateshare(share instance);
+    partial void Deleteshare(share instance);
     #endregion
 		
 		public CustomerInfoDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ENGLISHDICT_MDFConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["englishdictConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -90,19 +90,19 @@ namespace englishsnsVS10.datacontext
 			}
 		}
 		
-		public System.Data.Linq.Table<share> shares
-		{
-			get
-			{
-				return this.GetTable<share>();
-			}
-		}
-		
 		public System.Data.Linq.Table<user> users
 		{
 			get
 			{
 				return this.GetTable<user>();
+			}
+		}
+		
+		public System.Data.Linq.Table<share> shares
+		{
+			get
+			{
+				return this.GetTable<share>();
 			}
 		}
 	}
@@ -123,9 +123,9 @@ namespace englishsnsVS10.datacontext
 		
 		private int _shareid;
 		
-		private EntityRef<share> _share;
-		
 		private EntityRef<user> _user;
+		
+		private EntityRef<share> _share;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -145,8 +145,8 @@ namespace englishsnsVS10.datacontext
 		
 		public comment()
 		{
-			this._share = default(EntityRef<share>);
 			this._user = default(EntityRef<user>);
+			this._share = default(EntityRef<share>);
 			OnCreated();
 		}
 		
@@ -221,7 +221,7 @@ namespace englishsnsVS10.datacontext
 			{
 				if ((this._userid != value))
 				{
-					if ((this._share.HasLoadedOrAssignedValue || this._user.HasLoadedOrAssignedValue))
+					if ((this._user.HasLoadedOrAssignedValue || this._share.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -250,40 +250,6 @@ namespace englishsnsVS10.datacontext
 					this._shareid = value;
 					this.SendPropertyChanged("shareid");
 					this.OnshareidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="share_comment", Storage="_share", ThisKey="userid", OtherKey="id", IsForeignKey=true)]
-		public share share
-		{
-			get
-			{
-				return this._share.Entity;
-			}
-			set
-			{
-				share previousValue = this._share.Entity;
-				if (((previousValue != value) 
-							|| (this._share.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._share.Entity = null;
-						previousValue.comments.Remove(this);
-					}
-					this._share.Entity = value;
-					if ((value != null))
-					{
-						value.comments.Add(this);
-						this._userid = value.id;
-					}
-					else
-					{
-						this._userid = default(int);
-					}
-					this.SendPropertyChanged("share");
 				}
 			}
 		}
@@ -318,6 +284,40 @@ namespace englishsnsVS10.datacontext
 						this._userid = default(int);
 					}
 					this.SendPropertyChanged("user");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="share_comment", Storage="_share", ThisKey="userid", OtherKey="id", IsForeignKey=true)]
+		public share share
+		{
+			get
+			{
+				return this._share.Entity;
+			}
+			set
+			{
+				share previousValue = this._share.Entity;
+				if (((previousValue != value) 
+							|| (this._share.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._share.Entity = null;
+						previousValue.comments.Remove(this);
+					}
+					this._share.Entity = value;
+					if ((value != null))
+					{
+						value.comments.Add(this);
+						this._userid = value.id;
+					}
+					else
+					{
+						this._userid = default(int);
+					}
+					this.SendPropertyChanged("share");
 				}
 			}
 		}
@@ -528,209 +528,6 @@ namespace englishsnsVS10.datacontext
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.shares")]
-	public partial class share : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _sharecontent;
-		
-		private System.DateTime _sharetime;
-		
-		private int _userid;
-		
-		private EntitySet<comment> _comments;
-		
-		private EntityRef<user> _user;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnsharecontentChanging(string value);
-    partial void OnsharecontentChanged();
-    partial void OnsharetimeChanging(System.DateTime value);
-    partial void OnsharetimeChanged();
-    partial void OnuseridChanging(int value);
-    partial void OnuseridChanged();
-    #endregion
-		
-		public share()
-		{
-			this._comments = new EntitySet<comment>(new Action<comment>(this.attach_comments), new Action<comment>(this.detach_comments));
-			this._user = default(EntityRef<user>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sharecontent", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public string sharecontent
-		{
-			get
-			{
-				return this._sharecontent;
-			}
-			set
-			{
-				if ((this._sharecontent != value))
-				{
-					this.OnsharecontentChanging(value);
-					this.SendPropertyChanging();
-					this._sharecontent = value;
-					this.SendPropertyChanged("sharecontent");
-					this.OnsharecontentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sharetime", DbType="DateTime NOT NULL")]
-		public System.DateTime sharetime
-		{
-			get
-			{
-				return this._sharetime;
-			}
-			set
-			{
-				if ((this._sharetime != value))
-				{
-					this.OnsharetimeChanging(value);
-					this.SendPropertyChanging();
-					this._sharetime = value;
-					this.SendPropertyChanged("sharetime");
-					this.OnsharetimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int NOT NULL")]
-		public int userid
-		{
-			get
-			{
-				return this._userid;
-			}
-			set
-			{
-				if ((this._userid != value))
-				{
-					if (this._user.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnuseridChanging(value);
-					this.SendPropertyChanging();
-					this._userid = value;
-					this.SendPropertyChanged("userid");
-					this.OnuseridChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="share_comment", Storage="_comments", ThisKey="id", OtherKey="userid")]
-		public EntitySet<comment> comments
-		{
-			get
-			{
-				return this._comments;
-			}
-			set
-			{
-				this._comments.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_share", Storage="_user", ThisKey="userid", OtherKey="id", IsForeignKey=true)]
-		public user user
-		{
-			get
-			{
-				return this._user.Entity;
-			}
-			set
-			{
-				user previousValue = this._user.Entity;
-				if (((previousValue != value) 
-							|| (this._user.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._user.Entity = null;
-						previousValue.shares.Remove(this);
-					}
-					this._user.Entity = value;
-					if ((value != null))
-					{
-						value.shares.Add(this);
-						this._userid = value.id;
-					}
-					else
-					{
-						this._userid = default(int);
-					}
-					this.SendPropertyChanged("user");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_comments(comment entity)
-		{
-			this.SendPropertyChanging();
-			entity.share = this;
-		}
-		
-		private void detach_comments(comment entity)
-		{
-			this.SendPropertyChanging();
-			entity.share = null;
 		}
 	}
 	
@@ -953,6 +750,233 @@ namespace englishsnsVS10.datacontext
 		{
 			this.SendPropertyChanging();
 			entity.user = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.shares")]
+	public partial class share : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private string _sharecontent;
+		
+		private System.DateTime _sharetime;
+		
+		private int _userid;
+		
+		private int _explanationId;
+		
+		private EntitySet<comment> _comments;
+		
+		private EntityRef<user> _user;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnsharecontentChanging(string value);
+    partial void OnsharecontentChanged();
+    partial void OnsharetimeChanging(System.DateTime value);
+    partial void OnsharetimeChanged();
+    partial void OnuseridChanging(int value);
+    partial void OnuseridChanged();
+    partial void OnexplanationIdChanging(int value);
+    partial void OnexplanationIdChanged();
+    #endregion
+		
+		public share()
+		{
+			this._comments = new EntitySet<comment>(new Action<comment>(this.attach_comments), new Action<comment>(this.detach_comments));
+			this._user = default(EntityRef<user>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sharecontent", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string sharecontent
+		{
+			get
+			{
+				return this._sharecontent;
+			}
+			set
+			{
+				if ((this._sharecontent != value))
+				{
+					this.OnsharecontentChanging(value);
+					this.SendPropertyChanging();
+					this._sharecontent = value;
+					this.SendPropertyChanged("sharecontent");
+					this.OnsharecontentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sharetime", DbType="DateTime NOT NULL")]
+		public System.DateTime sharetime
+		{
+			get
+			{
+				return this._sharetime;
+			}
+			set
+			{
+				if ((this._sharetime != value))
+				{
+					this.OnsharetimeChanging(value);
+					this.SendPropertyChanging();
+					this._sharetime = value;
+					this.SendPropertyChanged("sharetime");
+					this.OnsharetimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int NOT NULL")]
+		public int userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					if (this._user.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnuseridChanging(value);
+					this.SendPropertyChanging();
+					this._userid = value;
+					this.SendPropertyChanged("userid");
+					this.OnuseridChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_explanationId", DbType="Int NOT NULL")]
+		public int explanationId
+		{
+			get
+			{
+				return this._explanationId;
+			}
+			set
+			{
+				if ((this._explanationId != value))
+				{
+					this.OnexplanationIdChanging(value);
+					this.SendPropertyChanging();
+					this._explanationId = value;
+					this.SendPropertyChanged("explanationId");
+					this.OnexplanationIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="share_comment", Storage="_comments", ThisKey="id", OtherKey="userid")]
+		public EntitySet<comment> comments
+		{
+			get
+			{
+				return this._comments;
+			}
+			set
+			{
+				this._comments.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_share", Storage="_user", ThisKey="userid", OtherKey="id", IsForeignKey=true)]
+		public user user
+		{
+			get
+			{
+				return this._user.Entity;
+			}
+			set
+			{
+				user previousValue = this._user.Entity;
+				if (((previousValue != value) 
+							|| (this._user.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user.Entity = null;
+						previousValue.shares.Remove(this);
+					}
+					this._user.Entity = value;
+					if ((value != null))
+					{
+						value.shares.Add(this);
+						this._userid = value.id;
+					}
+					else
+					{
+						this._userid = default(int);
+					}
+					this.SendPropertyChanged("user");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_comments(comment entity)
+		{
+			this.SendPropertyChanging();
+			entity.share = this;
+		}
+		
+		private void detach_comments(comment entity)
+		{
+			this.SendPropertyChanging();
+			entity.share = null;
 		}
 	}
 }
