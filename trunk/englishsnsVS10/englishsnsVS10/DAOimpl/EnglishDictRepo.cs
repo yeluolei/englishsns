@@ -17,6 +17,11 @@ namespace englishsnsVS10.DAOimpl
            return qresult;
         }
 
+        public explanation GetExplanation(int id)
+        {
+            return db.explanations.SingleOrDefault(e => e.id == id);
+        }
+
 
         //public List<string> getSentence(string queryWord) {
         //    var qresult = from term in db.terms

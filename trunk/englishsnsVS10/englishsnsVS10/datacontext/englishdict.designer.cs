@@ -38,8 +38,8 @@ namespace englishsnsVS10.datacontext
     partial void Deleteexplanation(explanation instance);
     #endregion
 		
-		public englishdictDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ENGLISHDICT_MDFConnectionString"].ConnectionString, mappingSource)
+		public englishdictDataContext() :
+        base(global::System.Configuration.ConfigurationManager.ConnectionStrings["englishdictConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

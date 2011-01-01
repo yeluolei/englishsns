@@ -3,6 +3,8 @@
 
   <object type="englishsnsVS10.Controllers.HomeController, englishsnsVS10" singleton="false" >
     <property name="Message" value="Welcome to ASP.NET MVC powered by Spring.NET!" />
+    <property name="customerRepo" ref="myCustomerInfoRepo"/>
+     <property name="englishDictRepo" ref="myEnglishDictRepo"/>
   </object>
 
     <object type="englishsnsVS10.Controllers.LookUpController, englishsnsVS10" singleton="false" >
@@ -10,10 +12,17 @@
     </object>
 
     <object type="englishsnsVS10.Controllers.TranslationController, englishsnsVS10" singleton="false" >
-
+    
     </object>
     <object type="englishsnsVS10.Controllers.DictGenController, englishsnsVS10" singleton="false" >
 
+    </object>
+    <object type="englishsnsVS10.Controllers.FollowController, englishsnsVS10" singleton="false" >
+        <property name="customerRepo" ref="myCustomerInfoRepo" />
+    </object>
+
+    <object type="englishsnsVS10.Controllers.ShareController, englishsnsVS10" singleton="false" >
+        <property name="cr" ref="myCustomerInfoRepo"/>
     </object>
 
     <object type="englishsnsVS10.Controllers.AccountController, englishsnsVS10" singleton="false" >
@@ -23,6 +32,10 @@
     <object id="myCustomerInfoRepo" type="englishsnsVS10.DAOimpl.CustomerInfoRepo, englishsnsVS10" singleton="false" >
 
     </object>
+    <object id="myEnglishDictRepo" type="englishsnsVS10.DAOimpl.EnglishDictRepo, englishsnsVS10" singleton="false" >
+
+    </object>
+    
 
 
 

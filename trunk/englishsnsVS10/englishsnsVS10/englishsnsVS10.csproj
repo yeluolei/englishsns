@@ -93,8 +93,10 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DictGenController.cs" />
+    <Compile Include="Controllers\FollowController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LookUpController.cs" />
+    <Compile Include="Controllers\ShareController.cs" />
     <Compile Include="Controllers\TranslationController.cs" />
     <Compile Include="DAOimpl\CustomerInfoRepo.cs" />
     <Compile Include="datacontext\CustomerInfo.designer.cs">
@@ -130,7 +132,9 @@
     <Content Include="App_Data\englishdict_log.ldf">
       <DependentUpon>englishdict.mdf</DependentUpon>
     </Content>
-    <Content Include="Config\controllers.xml" />
+    <Content Include="Config\controllers.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\BookInfo.css" />
     <Content Include="Content\BookViewStyle.css" />
     <Content Include="Content\demo.css" />
@@ -143,7 +147,9 @@
     <Content Include="Content\star.gif" />
     <Content Include="Content\UserCenter.css" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Follow\Index.aspx" />
     <Content Include="Views\LookUp\Index.aspx" />
+    <Content Include="Views\Share\Index.aspx" />
     <Content Include="Views\Translation\getTranslate.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

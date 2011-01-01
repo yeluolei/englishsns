@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ENGLISHDICT.MDF" Class="CustomerInfoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=latios-lap;Initial Catalog=ENGLISHDICT.MDF;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ENGLISHDICT_MDFConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="englishdict" Class="CustomerInfoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\englishdict.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="englishdictConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.comments" Member="comments">
     <Type Name="comment">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -7,8 +7,8 @@
       <Column Name="time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="shareid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="share_comment" Member="share" ThisKey="userid" OtherKey="id" Type="share" IsForeignKey="true" />
       <Association Name="user_comment" Member="user" ThisKey="userid" OtherKey="id" Type="user" IsForeignKey="true" />
+      <Association Name="share_comment" Member="share" ThisKey="userid" OtherKey="id" Type="share" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.followers" Member="followers">
@@ -20,16 +20,6 @@
       <Association Name="user_follower1" Member="user1" ThisKey="follower1" OtherKey="id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.shares" Member="shares">
-    <Type Name="share">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="sharecontent" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="sharetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="share_comment" Member="comments" ThisKey="id" OtherKey="userid" Type="comment" />
-      <Association Name="user_share" Member="user" ThisKey="userid" OtherKey="id" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.users" Member="users">
     <Type Name="user">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -39,6 +29,17 @@
       <Association Name="user_follower" Member="followers" ThisKey="id" OtherKey="userid" Type="follower" />
       <Association Name="user_follower1" Member="followers1" ThisKey="id" OtherKey="follower1" Type="follower" />
       <Association Name="user_share" Member="shares" ThisKey="id" OtherKey="userid" Type="share" />
+    </Type>
+  </Table>
+  <Table Name="dbo.shares" Member="shares">
+    <Type Name="share">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sharecontent" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="sharetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="explanationId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="share_comment" Member="comments" ThisKey="id" OtherKey="userid" Type="comment" />
+      <Association Name="user_share" Member="user" ThisKey="userid" OtherKey="id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
