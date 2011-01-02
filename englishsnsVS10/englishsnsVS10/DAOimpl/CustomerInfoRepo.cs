@@ -39,6 +39,11 @@ namespace englishsnsVS10.DAOimpl
 
         }
 
+        public void AddWordsbook(wordsbook wb)
+        {
+            db.wordsbooks.InsertOnSubmit(wb);
+        }
+
         public IQueryable<CommentModels> getcoments(String username)
         {
             throw new System.NotImplementedException();
@@ -56,6 +61,12 @@ namespace englishsnsVS10.DAOimpl
             throw new System.NotImplementedException();
         }
 
+        public IQueryable<wordsbook> GetWordsBook(int userid)
+        {
+            return from wb in db.wordsbooks
+                   where wb.userid == userid
+                   select wb;
+        }
         public IQueryable<share> getshares(int userId)
         {
             return from s in db.shares

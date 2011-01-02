@@ -17,6 +17,10 @@
     <!--     </div> -->
     <h2>
         <%=Html.Label(Model.queryWord) %></h2>
+        <%if (Request.IsAuthenticated)
+          { %>
+        <%:Html.ActionLink("加入单词簿", "Add", "wordsbook", new { wd = Model.queryWord }, new { })%>
+        <%} %>
     <% var result = Model.explanations;
        int i = 1;
        if (result != null)
@@ -36,8 +40,14 @@
                 </p>
             </td>
             <td>
-                <%:Html.ActionLink("分享", "Index", "Share", new { id = exp.id.ToString() }, new { })%>>
+                <%:Html.ActionLink("分享", "Index", "Share", new { id = exp.id.ToString() }, new { })%>
             </td>
+            <%if (Request.IsAuthenticated)
+              { %>
+            <td>
+                <%:Html.ActionLink("我来修改", "index", "EditWord", new { id = exp.id }, new { })%>
+            </td>
+            <%} %>
         </tr>
         <%    i++;
 } %>

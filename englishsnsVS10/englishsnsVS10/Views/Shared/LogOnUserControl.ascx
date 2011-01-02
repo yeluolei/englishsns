@@ -4,6 +4,7 @@
 %>
         Welcome <b><%: Page.User.Identity.Name %></b>!
         [ <%: Html.ActionLink("Log Off", "LogOff", "Account") %> ]
+        [ <%: Html.ActionLink("单词簿", "getwordsbook", "wordsbook", new { }, new { })%>]
 <%
     }
     else {

@@ -22,7 +22,7 @@ namespace englishsnsVS10.datacontext
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="ENGLISHDICT.MDF")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="englishdict")]
 	public partial class englishdictDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -38,8 +38,8 @@ namespace englishsnsVS10.datacontext
     partial void Deleteexplanation(explanation instance);
     #endregion
 		
-		public englishdictDataContext() :
-        base(global::System.Configuration.ConfigurationManager.ConnectionStrings["englishdictConnectionString"].ConnectionString, mappingSource)
+		public englishdictDataContext() : 
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["englishdictConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -187,6 +187,8 @@ namespace englishsnsVS10.datacontext
 		
 		private int _id;
 		
+		private string _modifier;
+		
 		private EntityRef<word> _word;
 		
     #region Extensibility Method Definitions
@@ -199,6 +201,8 @@ namespace englishsnsVS10.datacontext
     partial void OnexpcontentChanged();
     partial void OnidChanging(int value);
     partial void OnidChanged();
+    partial void OnmodifierChanging(string value);
+    partial void OnmodifierChanged();
     #endregion
 		
 		public explanation()
@@ -267,6 +271,26 @@ namespace englishsnsVS10.datacontext
 					this._id = value;
 					this.SendPropertyChanged("id");
 					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_modifier", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string modifier
+		{
+			get
+			{
+				return this._modifier;
+			}
+			set
+			{
+				if ((this._modifier != value))
+				{
+					this.OnmodifierChanging(value);
+					this.SendPropertyChanging();
+					this._modifier = value;
+					this.SendPropertyChanged("modifier");
+					this.OnmodifierChanged();
 				}
 			}
 		}
