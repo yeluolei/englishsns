@@ -18,6 +18,7 @@
       <Association Name="user_follower1" Member="followers1" ThisKey="id" OtherKey="follower1" Type="follower" />
       <Association Name="user_share" Member="shares" ThisKey="id" OtherKey="userid" Type="share" />
       <Association Name="user_comment" Member="comments" ThisKey="id" OtherKey="userid" Type="comment" />
+      <Association Name="user_wordsbook" Member="wordsbooks" ThisKey="id" OtherKey="userid" Type="wordsbook" />
     </Type>
   </Table>
   <Table Name="dbo.shares" Member="shares">
@@ -40,6 +41,14 @@
       <Column Name="shareid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="share_comment" Member="share" ThisKey="shareid" OtherKey="id" Type="share" IsForeignKey="true" />
       <Association Name="user_comment" Member="user" ThisKey="userid" OtherKey="id" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.wordsbooks" Member="wordsbooks">
+    <Type Name="wordsbook">
+      <Column Name="wordname" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="user_wordsbook" Member="user" ThisKey="userid" OtherKey="id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

@@ -4,7 +4,7 @@
   <object type="englishsnsVS10.Controllers.HomeController, englishsnsVS10" singleton="false" >
     <property name="Message" value="Welcome to ASP.NET MVC powered by Spring.NET!" />
     <property name="customerRepo" ref="myCustomerInfoRepo"/>
-     <property name="englishDictRepo" ref="myEnglishDictRepo"/>
+    <property name="englishDictRepo" ref="myEnglishDictRepo"/>
   </object>
 
     <object type="englishsnsVS10.Controllers.LookUpController, englishsnsVS10" singleton="false" >
@@ -19,6 +19,12 @@
     </object>
     <object type="englishsnsVS10.Controllers.DictGenController, englishsnsVS10" singleton="false" >
 
+    </object>
+    <object type="englishsnsVS10.Controllers.EditWordController, englishsnsVS10" singleton="false" >
+
+    </object>
+    <object type="englishsnsVS10.Controllers.WordsBookController, englishsnsVS10" singleton="false" >
+        <property name="customerRepo" ref="myCustomerInfoRepo"/>
     </object>
     <object type="englishsnsVS10.Controllers.FollowController, englishsnsVS10" singleton="false" >
         <property name="customerRepo" ref="myCustomerInfoRepo" />

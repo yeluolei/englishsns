@@ -42,6 +42,9 @@ namespace englishsnsVS10.datacontext
     partial void Insertcomment(comment instance);
     partial void Updatecomment(comment instance);
     partial void Deletecomment(comment instance);
+    partial void Insertwordsbook(wordsbook instance);
+    partial void Updatewordsbook(wordsbook instance);
+    partial void Deletewordsbook(wordsbook instance);
     #endregion
 		
 		public CustomerInfoDataContext() : 
@@ -103,6 +106,14 @@ namespace englishsnsVS10.datacontext
 			get
 			{
 				return this.GetTable<comment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<wordsbook> wordsbooks
+		{
+			get
+			{
+				return this.GetTable<wordsbook>();
 			}
 		}
 	}
@@ -315,6 +326,8 @@ namespace englishsnsVS10.datacontext
 		
 		private EntitySet<comment> _comments;
 		
+		private EntitySet<wordsbook> _wordsbooks;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -333,6 +346,7 @@ namespace englishsnsVS10.datacontext
 			this._followers1 = new EntitySet<follower>(new Action<follower>(this.attach_followers1), new Action<follower>(this.detach_followers1));
 			this._shares = new EntitySet<share>(new Action<share>(this.attach_shares), new Action<share>(this.detach_shares));
 			this._comments = new EntitySet<comment>(new Action<comment>(this.attach_comments), new Action<comment>(this.detach_comments));
+			this._wordsbooks = new EntitySet<wordsbook>(new Action<wordsbook>(this.attach_wordsbooks), new Action<wordsbook>(this.detach_wordsbooks));
 			OnCreated();
 		}
 		
@@ -448,6 +462,19 @@ namespace englishsnsVS10.datacontext
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_wordsbook", Storage="_wordsbooks", ThisKey="id", OtherKey="userid")]
+		public EntitySet<wordsbook> wordsbooks
+		{
+			get
+			{
+				return this._wordsbooks;
+			}
+			set
+			{
+				this._wordsbooks.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -511,6 +538,18 @@ namespace englishsnsVS10.datacontext
 		}
 		
 		private void detach_comments(comment entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
+		}
+		
+		private void attach_wordsbooks(wordsbook entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_wordsbooks(wordsbook entity)
 		{
 			this.SendPropertyChanging();
 			entity.user = null;
@@ -952,6 +991,157 @@ namespace englishsnsVS10.datacontext
 					if ((value != null))
 					{
 						value.comments.Add(this);
+						this._userid = value.id;
+					}
+					else
+					{
+						this._userid = default(int);
+					}
+					this.SendPropertyChanged("user");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.wordsbooks")]
+	public partial class wordsbook : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _wordname;
+		
+		private int _userid;
+		
+		private int _id;
+		
+		private EntityRef<user> _user;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnwordnameChanging(string value);
+    partial void OnwordnameChanged();
+    partial void OnuseridChanging(int value);
+    partial void OnuseridChanged();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    #endregion
+		
+		public wordsbook()
+		{
+			this._user = default(EntityRef<user>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_wordname", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string wordname
+		{
+			get
+			{
+				return this._wordname;
+			}
+			set
+			{
+				if ((this._wordname != value))
+				{
+					this.OnwordnameChanging(value);
+					this.SendPropertyChanging();
+					this._wordname = value;
+					this.SendPropertyChanged("wordname");
+					this.OnwordnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userid", DbType="Int NOT NULL")]
+		public int userid
+		{
+			get
+			{
+				return this._userid;
+			}
+			set
+			{
+				if ((this._userid != value))
+				{
+					if (this._user.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnuseridChanging(value);
+					this.SendPropertyChanging();
+					this._userid = value;
+					this.SendPropertyChanged("userid");
+					this.OnuseridChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_wordsbook", Storage="_user", ThisKey="userid", OtherKey="id", IsForeignKey=true)]
+		public user user
+		{
+			get
+			{
+				return this._user.Entity;
+			}
+			set
+			{
+				user previousValue = this._user.Entity;
+				if (((previousValue != value) 
+							|| (this._user.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user.Entity = null;
+						previousValue.wordsbooks.Remove(this);
+					}
+					this._user.Entity = value;
+					if ((value != null))
+					{
+						value.wordsbooks.Add(this);
 						this._userid = value.id;
 					}
 					else
