@@ -27,5 +27,13 @@ namespace englishsnsVS10.Controllers
             LookUpWordResult result = new LookUpWordResult(queryWord,exps);
             return View(result);
         }
+
+        public ActionResult History(int id)
+        {
+            var exp = dictRepo.GetExplanation(id);
+            var history = dictRepo.GetHistory(exp);
+            var result = new LookUpWordResult(exp.wordname, history);
+            return View(result);
+        }
     }
 }
