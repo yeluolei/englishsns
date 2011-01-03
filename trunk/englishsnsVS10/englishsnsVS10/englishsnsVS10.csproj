@@ -152,6 +152,7 @@
     <Content Include="Global.asax" />
     <Content Include="Views\Comment\GetComments.aspx" />
     <Content Include="Views\Comment\Index.aspx" />
+    <Content Include="Views\EditWord\Index.aspx" />
     <Content Include="Views\Follow\Index.aspx" />
     <Content Include="Views\LookUp\Index.aspx" />
     <Content Include="Views\Shared\Success.aspx" />

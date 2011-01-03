@@ -18,10 +18,10 @@
         <property name="customerRepo" ref="myCustomerInfoRepo"/>
     </object>
     <object type="englishsnsVS10.Controllers.DictGenController, englishsnsVS10" singleton="false" >
-
+   
     </object>
     <object type="englishsnsVS10.Controllers.EditWordController, englishsnsVS10" singleton="false" >
-
+        <property name="englishRepo" ref="myEnglishDictRepo" />
     </object>
     <object type="englishsnsVS10.Controllers.WordsBookController, englishsnsVS10" singleton="false" >
         <property name="customerRepo" ref="myCustomerInfoRepo"/>
