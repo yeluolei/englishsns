@@ -39,6 +39,7 @@ namespace englishsnsVS10.Controllers
                         if (key == null) break;
                         explanation newexp = new explanation();
                         newexp.expcontent = exp;
+                        newexp.createdata = DateTime.Now;
                         newWord.explanations.Add(newexp);
                         db.explanations.InsertOnSubmit(newexp);
                     }

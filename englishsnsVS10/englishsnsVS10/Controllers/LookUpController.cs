@@ -14,10 +14,12 @@ namespace englishsnsVS10.Controllers
         //
         // GET: /LookUp/
         private EnglishDictRepo dictRepo = EnglishDictRepoFactory.getInstance();
+
         public ActionResult Index()
         {
             return View();
         }
+
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Index(string queryWord)
         {

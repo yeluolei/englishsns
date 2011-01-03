@@ -8,17 +8,17 @@
         <elementListCompartment Id="df410663-f771-433d-a71e-4bc5816428d0" absoluteBounds="0.765, 1.585, 1.9700000000000002, 0.44169108072916663" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ea6af069-22af-4f4d-b1e6-1f655b62dbf3" absoluteBounds="4.375, 1.125, 2, 1.5785953776041666">
+    <classShape Id="abe4aa30-0205-48cc-b3b5-84270389bd94" absoluteBounds="4.25, 1, 2, 2.1554996744791666">
       <DataClassMoniker Name="/englishdictDataContext/explanation" />
       <nestedChildShapes>
-        <elementListCompartment Id="f926e4c0-35d5-4457-84ef-8bdc253ac274" absoluteBounds="4.39, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="2c1df908-9be3-43ea-a82d-530531f417e1" absoluteBounds="4.265, 1.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 1.62584554036458); (4.375 : 1.62584554036458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.62584554036458); (4.25 : 1.62584554036458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/englishdictDataContext/word/word_explanation" />
       <nodes>
         <classShapeMoniker Id="4ec6423d-0e4e-4866-ac07-c71f16af96ae" />
-        <classShapeMoniker Id="ea6af069-22af-4f4d-b1e6-1f655b62dbf3" />
+        <classShapeMoniker Id="abe4aa30-0205-48cc-b3b5-84270389bd94" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

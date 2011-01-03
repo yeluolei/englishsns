@@ -10,9 +10,11 @@ namespace englishsnsVS10.DAOimpl
     public class EnglishDictRepo /* : englishsnsVS10.DAO.IEnglishDictRepo */
     {   
         private englishdictDataContext db = new englishdictDataContext();
+
+
         public IQueryable<explanation> getExplanations(String queryWord) {
             var qresult = from exp in db.explanations
-                          where exp.wordname == queryWord
+                          where exp.wordname == queryWord && exp.active == 1                  
                           select exp;
            return qresult;
         }
@@ -20,6 +22,12 @@ namespace englishsnsVS10.DAOimpl
         public explanation GetExplanation(int id)
         {
             return db.explanations.SingleOrDefault(e => e.id == id);
+        }
+
+
+        public void AddExplanation(explanation ex)
+        {
+            db.explanations.InsertOnSubmit(ex);
         }
 
 

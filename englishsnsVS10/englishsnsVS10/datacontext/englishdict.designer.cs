@@ -189,6 +189,12 @@ namespace englishsnsVS10.datacontext
 		
 		private string _modifier;
 		
+		private System.DateTime _createdata;
+		
+		private int _reference;
+		
+		private int _active;
+		
 		private EntityRef<word> _word;
 		
     #region Extensibility Method Definitions
@@ -203,6 +209,12 @@ namespace englishsnsVS10.datacontext
     partial void OnidChanged();
     partial void OnmodifierChanging(string value);
     partial void OnmodifierChanged();
+    partial void OncreatedataChanging(System.DateTime value);
+    partial void OncreatedataChanged();
+    partial void OnreferenceChanging(int value);
+    partial void OnreferenceChanged();
+    partial void OnactiveChanging(int value);
+    partial void OnactiveChanged();
     #endregion
 		
 		public explanation()
@@ -291,6 +303,66 @@ namespace englishsnsVS10.datacontext
 					this._modifier = value;
 					this.SendPropertyChanged("modifier");
 					this.OnmodifierChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createdata", DbType="DateTime NOT NULL")]
+		public System.DateTime createdata
+		{
+			get
+			{
+				return this._createdata;
+			}
+			set
+			{
+				if ((this._createdata != value))
+				{
+					this.OncreatedataChanging(value);
+					this.SendPropertyChanging();
+					this._createdata = value;
+					this.SendPropertyChanged("createdata");
+					this.OncreatedataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_reference", DbType="Int NOT NULL")]
+		public int reference
+		{
+			get
+			{
+				return this._reference;
+			}
+			set
+			{
+				if ((this._reference != value))
+				{
+					this.OnreferenceChanging(value);
+					this.SendPropertyChanging();
+					this._reference = value;
+					this.SendPropertyChanged("reference");
+					this.OnreferenceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_active", DbType="Int NOT NULL")]
+		public int active
+		{
+			get
+			{
+				return this._active;
+			}
+			set
+			{
+				if ((this._active != value))
+				{
+					this.OnactiveChanging(value);
+					this.SendPropertyChanging();
+					this._active = value;
+					this.SendPropertyChanged("active");
+					this.OnactiveChanged();
 				}
 			}
 		}
