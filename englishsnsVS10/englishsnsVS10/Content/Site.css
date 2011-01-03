@@ -536,3 +536,9 @@ div#title
 {
     width: 6em;
 }
+
+.fortextarea
+{
+    width:300px;
+    height:150px;
+}

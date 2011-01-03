@@ -39,12 +39,15 @@
                     <%=Html.Encode(exp.expcontent)%>
                 </p>
             </td>
-            <td>
+            <td style="width:40px">
                 <%:Html.ActionLink("分享", "Index", "Share", new { id = exp.id.ToString() }, new { })%>
+            </td>
+            <td style="width:40px">
+                <%:Html.ActionLink("查看历史", "history", "Lookup", new { id = exp.id.ToString() }, new { })%>
             </td>
             <%if (Request.IsAuthenticated)
               { %>
-            <td>
+            <td style="width:80px">
                 <%:Html.ActionLink("我来修改", "index", "EditWord", new { id = exp.id }, new { })%>
             </td>
             <%} %>
@@ -60,4 +63,11 @@
     <%--    <div>
         <%: Html.ActionLink("查看词条", "Index", "EditWords", new { queryWord = Model.queryWord }, new { })%>
     </div>--%>
+    <%if (Request.IsAuthenticated)
+        { %>
+    <td style="width:80px">
+        <%:Html.ActionLink("我来添加", "Add", "EditWord", new { word = Model.queryWord }, new { })%>
+    </td>
+    <%} %>
+
 </asp:Content>

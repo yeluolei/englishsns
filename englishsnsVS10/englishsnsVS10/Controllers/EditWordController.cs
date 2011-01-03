@@ -47,5 +47,27 @@ namespace englishsnsVS10.Controllers
             return Redirect("/lookup/index?queryword="+temp.wordname);
         }
 
+        public ActionResult Add(string word)
+        {
+            ViewData["word"] = word;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(string word,FormCollection form)
+        {
+            explanation exp = new explanation();
+            exp.wordname = form["word"];
+            exp.createdata = DateTime.Now;
+            exp.modifier = User.Identity.Name;
+            exp.reference = -1;
+            exp.expcontent = form["content"];
+            exp.active = 1;
+            englishRepo.AddExplanation(exp);
+
+            englishRepo.Save();
+            return Redirect("/lookup/index?queryword=" + word);
+        }
+
     }
 }

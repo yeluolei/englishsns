@@ -30,7 +30,12 @@ namespace englishsnsVS10.DAOimpl
             db.explanations.InsertOnSubmit(ex);
         }
 
-
+        public IQueryable<explanation> GetHistory(explanation ex)
+        {
+            return from e in db.explanations
+                   where e.reference == ex.reference
+                   select e;
+        }
         //public List<string> getSentence(string queryWord) {
         //    var qresult = from term in db.terms
         //                  where term.word.theWord == queryWord
