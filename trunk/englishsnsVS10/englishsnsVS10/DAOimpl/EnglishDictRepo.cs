@@ -32,9 +32,33 @@ namespace englishsnsVS10.DAOimpl
 
         public IQueryable<explanation> GetHistory(explanation ex)
         {
-            return from e in db.explanations
-                   where e.reference == ex.reference
-                   select e;
+            IQueryable<explanation> history;
+            if (ex.reference != -1)
+            {
+                history = from e in db.explanations
+                          where (e.reference == ex.reference && ex.wordname == e.wordname && e.active != -1) || ( e.reference == -1 && e.id == ex.reference)
+                          select e;
+            }
+            else
+            {
+                history = from e in db.explanations
+                          where (e.reference == ex.id || e.id == ex.id) && e.active != -1
+                          select e;
+            }
+            return history;
+        }
+
+        public void DeleteExplanation(explanation ex)
+        {
+            db.explanations.DeleteOnSubmit(ex);
+        }
+
+        public explanation GetRootExplanation(explanation ex)
+        {
+            if (ex.reference != -1)
+                return db.explanations.SingleOrDefault(e => e.reference == -1 && e.id == ex.reference);
+            else
+                return ex;
         }
         //public List<string> getSentence(string queryWord) {
         //    var qresult = from term in db.terms

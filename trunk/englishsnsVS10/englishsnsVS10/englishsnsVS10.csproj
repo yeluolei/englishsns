@@ -155,6 +155,7 @@
     <Content Include="Views\EditWord\Add.aspx" />
     <Content Include="Views\EditWord\Index.aspx" />
     <Content Include="Views\Follow\Index.aspx" />
+    <Content Include="Views\EditWord\Delete.aspx" />
     <Content Include="Views\LookUp\History.aspx" />
     <Content Include="Views\LookUp\Index.aspx" />
     <Content Include="Views\Shared\Success.aspx" />

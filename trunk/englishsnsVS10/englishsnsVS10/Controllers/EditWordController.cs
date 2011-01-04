@@ -69,5 +69,41 @@ namespace englishsnsVS10.Controllers
             return Redirect("/lookup/index?queryword=" + word);
         }
 
+        public ActionResult Delete(int id)
+        {
+            var exp = englishRepo.GetExplanation(id);
+            return View(exp);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection form)
+        {
+            var exp = englishRepo.GetExplanation(id);
+            var history = englishRepo.GetHistory(exp);
+            if (exp.active == 1)
+            {
+                if (history.Count() > 1)
+                {
+                    var tempexp = history.Skip(history.Count()-2).FirstOrDefault();
+                    //for (int i = history.Count() - 1; i >= 0; --i)
+                    //{
+                    //    if (history.ElementAt(i).active == 0)
+                    //    {
+                    //        history.ElementAt(i).active = 1;
+                    //    }
+                        tempexp.active = 1;
+                    //}
+                }
+            }
+
+            if (exp.modifier != "System")
+            {
+                exp.active = -1;
+                var exps = englishRepo.GetHistory(exp);
+                englishRepo.Save();
+            }
+            return View();
+        }
+
     }
 }

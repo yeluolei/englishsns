@@ -35,5 +35,7 @@ namespace englishsnsVS10.Controllers
             var result = new LookUpWordResult(exp.wordname, history);
             return View(result);
         }
+
+
     }
 }
