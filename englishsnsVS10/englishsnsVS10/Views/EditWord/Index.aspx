@@ -10,7 +10,7 @@
     
         <% using (Html.BeginForm("Index", "editword", FormMethod.Post))
        { %>
-    <p><textarea name="content" style="width:250px; height:150px"></textarea></p>
+    <p><textarea name="content" style="width:250px; height:150px"><%:ViewData["expcontent"] %></textarea></p>
     <input title="Search" value="确定" type="submit" />
     <% } %>
 </asp:Content>
