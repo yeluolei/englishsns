@@ -17,6 +17,8 @@ namespace englishsnsVS10.Controllers
 
         public ActionResult Index(int id)
         {
+            string expcontent = englishRepo.GetExplanation(id).expcontent;
+            ViewData["expcontent"] = expcontent;
             return View();
         }
 
