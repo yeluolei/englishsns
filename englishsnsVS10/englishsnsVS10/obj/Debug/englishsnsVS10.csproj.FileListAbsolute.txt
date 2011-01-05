@@ -16,9 +16,3 @@ E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\bin\englishsns
 E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\bin\Bing.dll
 E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.dll
 E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.pdb
-D:\Englishsns\englishsnsVS10\englishsnsVS10\bin\englishsnsVS10.dll
-D:\Englishsns\englishsnsVS10\englishsnsVS10\bin\englishsnsVS10.pdb
-D:\Englishsns\englishsnsVS10\englishsnsVS10\bin\Bing.dll
-D:\Englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\ResolveAssemblyReference.cache
-D:\Englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.dll
-D:\Englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.pdb
