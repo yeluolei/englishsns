@@ -29,6 +29,11 @@ namespace englishsnsVS10.DAOimpl
             db.users.InsertOnSubmit(user);
         }
 
+        public void DelelteCustomer(user user)
+        {
+            db.users.DeleteOnSubmit(user);
+        }
+
         public void addcoments(CommentModels comment)
         {
 

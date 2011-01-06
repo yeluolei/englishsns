@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DictGenController.cs" />
     <Compile Include="Controllers\EditWordController.cs" />
     <Compile Include="Controllers\FollowController.cs" />
@@ -152,6 +153,13 @@
     <Content Include="Global.asax" />
     <Content Include="Views\Comment\GetComments.aspx" />
     <Content Include="Views\Comment\Index.aspx" />
+    <Content Include="Views\Customer\Create.aspx" />
+    <Content Include="Views\Customer\Delete.aspx" />
+    <Content Include="Views\Customer\Deleted.aspx" />
+    <Content Include="Views\Customer\Details.aspx" />
+    <Content Include="Views\Customer\Edit.aspx" />
+    <Content Include="Views\Customer\Index.aspx" />
+    <Content Include="Views\Customer\NoteFound.aspx" />
     <Content Include="Views\EditWord\Add.aspx" />
     <Content Include="Views\EditWord\Index.aspx" />
     <Content Include="Views\Follow\Index.aspx" />
