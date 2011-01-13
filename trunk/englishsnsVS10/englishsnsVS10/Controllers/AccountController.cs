@@ -10,6 +10,7 @@ using System.Web.Security;
 using englishsnsVS10.Models;
 using englishsnsVS10.datacontext;
 using englishsnsVS10.DAOimpl;
+using System.Security.Cryptography;
 
 namespace englishsnsVS10.Controllers
 {
@@ -21,7 +22,7 @@ namespace englishsnsVS10.Controllers
         public IFormsAuthenticationService FormsService { get; set; }
         public IMembershipService MembershipService { get; set; }
 
-
+        Random ran = new Random();
         protected override void Initialize(RequestContext requestContext)
         {
             if (FormsService == null) { FormsService = new FormsAuthenticationService(); }
@@ -37,36 +38,34 @@ namespace englishsnsVS10.Controllers
         public ActionResult LogOn()
         {
             //return View();
-            return Redirect("http://jaccount.sjtu.in/index.php?reurl=http://localhost:5596/account/logon");
+            //string note = GetRandomString(10);
+            //Response.Cookies["loginnote"].Value = note;
+           // Response.Cookies["loginnote"].Expires = DateTime.Now.AddHours(1.0);
+            return Redirect("http://jaccount.sjtu.in/index.php?reurl=http://localhost:12183/account/logon");
         }
 
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    if (MembershipService.ValidateUser(model.UserName, model.Password))
-            //    {
-            //        FormsService.SignIn(model.UserName, model.RememberMe);
-            //        if (!String.IsNullOrEmpty(returnUrl))
-            //        {
-            //            return Redirect(returnUrl);
-            //        }
-            //        else
-            //        {
-            //            return RedirectToAction("Index", "Home");
-            //        }
-            //    }
-            //    else
-            //    {
-            //        ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            //    }
-            //}
+            //SHA1 sha = new SHA1Managed();
 
-            //// If we got this far, something failed, redisplay form
-            //return View(model);
+            //string returnauth = Request.Cookies["loginnote"].Value;
+            //var result = sha.ComputeHash(System.Text.Encoding.ASCII.GetBytes(returnauth));
 
+            //System.IO.StreamReader sr = new System.IO.StreamReader(Server.MapPath(@"..\public.key"));
+            //string publickey = sr.ReadToEnd();
+           // sr.Close();
 
+            //RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+
+            //rsa.ImportParameters(ConvertFromPemPublicKey(publickey));
+
+            //var temp = rsa.ToXmlString(false);
+            //string temp = rsa.ToXmlString(true);
+            //rsa.FromXmlString(publickey);
+            //RSAParameters para = new RSAParameters();
+            //var result = System.Text.Encoding.ASCII.GetString(rsa.Decrypt(System.Text.Encoding.ASCII.GetBytes(auth), false));
+            
             if (customerInfoRepo.GetCustomer(model.uid).Count() == 0)
             {
                 user user = new user();
@@ -165,5 +164,42 @@ namespace englishsnsVS10.Controllers
             return View();
         }
 
+        private string GetRandomString(int size)
+        {
+            string result = "";
+
+            for (int i = 1; i < size; i++)
+            {
+                int temp = ran.Next(100);
+                while ( 'a' > temp || temp > 'z' )
+                {
+                    temp = ran.Next();
+                }
+                result += (char)temp;
+            }
+            return result;
+        }
+
+        public static RSAParameters ConvertFromPemPublicKey(string pemFileConent)
+        {
+            if (string.IsNullOrEmpty(pemFileConent))
+            {
+                throw new ArgumentNullException("pemFileConent", "This arg cann't be empty.");
+            }
+            pemFileConent = pemFileConent.Replace("-----BEGIN PUBLIC KEY-----", "").Replace("-----END PUBLIC KEY-----", "").Replace("\n", "").Replace("\r", "");
+            byte[] keyData = Convert.FromBase64String(pemFileConent);
+            if (keyData.Length < 162)
+            {
+                throw new ArgumentException("pem file content is incorrect.");
+            }
+            byte[] pemModulus = new byte[128];
+            byte[] pemPublicExponent = new byte[3];
+            Array.Copy(keyData, 29, pemModulus, 0, 128);
+            Array.Copy(keyData, 159, pemPublicExponent, 0, 3);
+            RSAParameters para = new RSAParameters();
+            para.Modulus = pemModulus;
+            para.Exponent = pemPublicExponent;
+            return para;
+        }
     }
 }
