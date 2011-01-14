@@ -65,7 +65,7 @@ namespace englishsnsVS10.Controllers
             //rsa.FromXmlString(publickey);
             //RSAParameters para = new RSAParameters();
             //var result = System.Text.Encoding.ASCII.GetString(rsa.Decrypt(System.Text.Encoding.ASCII.GetBytes(auth), false));
-            
+         
             if (customerInfoRepo.GetCustomer(model.uid).Count() == 0)
             {
                 user user = new user();
@@ -73,7 +73,9 @@ namespace englishsnsVS10.Controllers
                 user.name = model.chinesename;
                 customerInfoRepo.AddCustomer(user);
                 customerInfoRepo.save();
+           
             }
+            
             FormsService.SignIn(model.uid, false);
             return RedirectToAction("Index", "Home");
         }
