@@ -13,7 +13,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Security.Cryptography;
 
-namespace englishsnsVS10.DAOimpl
+namespace englishsnsVS10.Controllers
 {
     public class CustomerController : Controller
     {

@@ -10,6 +10,9 @@
     <object type="englishsnsVS10.Controllers.LookUpController, englishsnsVS10" singleton="false" >
    
     </object>
+    <object type="englishsnsVS10.Controllers.CustomerController, englishsnsVS10" singleton="false" >
+
+    </object>
 
     <object type="englishsnsVS10.Controllers.TranslationController, englishsnsVS10" singleton="false" >
     
