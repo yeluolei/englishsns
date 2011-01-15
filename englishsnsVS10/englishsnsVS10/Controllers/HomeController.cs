@@ -30,7 +30,7 @@ namespace englishsnsVS10.Controllers
             {
                 
                 string userAccount = User.Identity.Name;
-                user customer = customerRepo.GetCustomer(userAccount).First();
+                user customer = customerRepo.GetCustomer(userAccount);
                 var followedPeoples = customerRepo.GetFollowedPeople(customer);
                 foreach (var followedPeople in followedPeoples)
                 {

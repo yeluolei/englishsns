@@ -155,6 +155,7 @@
     <Content Include="Views\Comment\GetComments.aspx" />
     <Content Include="Views\Comment\Index.aspx" />
     <Content Include="Views\Customer\Create.aspx" />
+    <Content Include="Views\Customer\Created.aspx" />
     <Content Include="Views\Customer\Delete.aspx" />
     <Content Include="Views\Customer\Deleted.aspx" />
     <Content Include="Views\Customer\Details.aspx" />

@@ -11,28 +11,41 @@ namespace englishsnsVS10.DAOimpl
     {
         private CustomerInfoDataContext db = new CustomerInfoDataContext();
 
-        public IQueryable<user> GetCustomer(string account)
+        public IQueryable<user> FindAllCustomer()
         {
-           
-            return from user in db.users
-                   where user.username == account
-                   select user;
+            return db.users;
         }
 
-        public user GetCustomer(int ID)
+        //
+        //public IQueryable<user> GetCustomer(string account)
+        //{   
+        //    return from user in db.users
+        //           where user.username == account
+        //           select user;
+        //}//just for admin
+        //
+
+        public user GetCustomer(string username)
         {
-            return db.users.SingleOrDefault(d => d.id == ID);
-        }
+            return db.users.SingleOrDefault(d => d.username == username);
+        }//not for now
+
+        public user GetCustomer(int id)
+        {
+            return db.users.SingleOrDefault(d => d.id == id);
+        }//not for now
+
 
         public void AddCustomer(user user)
         {
+            //user
             db.users.InsertOnSubmit(user);
-        }
+        }//just for admin
 
         public void DelelteCustomer(user user)
         {
             db.users.DeleteOnSubmit(user);
-        }
+        }//just for admin
 
         public void addcoments(CommentModels comment)
         {
@@ -105,8 +118,8 @@ namespace englishsnsVS10.DAOimpl
             var temp = GetCustomer(followerId);
             var temp2 = GetCustomer(userid);
             follower followerInstance = new follower();
-            followerInstance.follower1 = temp.First().id;
-            followerInstance.userid = temp2.First().id;
+            followerInstance.follower1 = temp.id;
+            followerInstance.userid = temp2.id;
             db.followers.InsertOnSubmit(followerInstance);
         }
 

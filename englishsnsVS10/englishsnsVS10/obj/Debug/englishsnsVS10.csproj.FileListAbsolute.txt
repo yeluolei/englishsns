@@ -16,9 +16,9 @@ E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\bin\englishsns
 E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\bin\Bing.dll
 E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.dll
 E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.pdb
-E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\ResolveAssemblyReference.cache
-E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.dll
 E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\englishsnsVS10.dll
 E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\englishsnsVS10.pdb
 E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\Bing.dll
+E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\ResolveAssemblyReference.cache
+E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.dll
 E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.pdb

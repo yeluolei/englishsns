@@ -7,6 +7,12 @@ using englishsnsVS10.DAOimpl;
 using englishsnsVS10.datacontext;
 using englishsnsVS10.Models;
 
+using System.Diagnostics.CodeAnalysis;
+using System.Security.Principal;
+using System.Web.Routing;
+using System.Web.Security;
+using System.Security.Cryptography;
+
 namespace englishsnsVS10.DAOimpl
 {
     public class CustomerController : Controller
@@ -16,18 +22,18 @@ namespace englishsnsVS10.DAOimpl
         //
         // GET: /Customer/
 
-        public ActionResult Index(string account)
+        public ActionResult Index()
         {
-            var user = customerInfoRepo.GetCustomer(account).ToList();
+            var user = customerInfoRepo.FindAllCustomer().ToList();
             return View("Index",user);
         }
 
         //
         // GET: /Customer/Details/5
 
-        public ActionResult Details(int id)
+        public ActionResult Details(string username)
         {
-            user User = customerInfoRepo.GetCustomer(id);
+            user User = customerInfoRepo.GetCustomer(username);
 
             if (User == null)
             {
@@ -37,47 +43,67 @@ namespace englishsnsVS10.DAOimpl
             {
                 return View("Details", User);
             }
-        }
+        }//not for now
 
         //
         // GET: /Customer/Create
 
-        public ActionResult Create()
+        public ActionResult Create(string username)
         {
-            user User = new user();
-            return View("Create",User);
+            //user User = new user();
+            //return View("Create",User);
+            user User = customerInfoRepo.GetCustomer(username);
+            if (User == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            else
+            {
+                return View("Creat", User);
+            }
         } 
 
         //
         // POST: /Customer/Create
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(string username, FormCollection collection)
         {
-            user User = new user();
-            try
-            {
-                UpdateModel(User);
-                customerInfoRepo.AddCustomer(User);
-                customerInfoRepo.save();
+            //user User = new user();
+            //try
+            //{
+            //    UpdateModel(User);
+                //User
+            //    Roles.AddUserToRole(User.username,"admin");
+            //    customerInfoRepo.AddCustomer(User);
+            //    customerInfoRepo.save();
 
                 // TODO: Add insert logic here
 
-                return RedirectToAction("Details", new { id = User.id });
-            }
-            catch
-            {
+           //     return RedirectToAction("Details", new { id = User.id });
+            //}
+            //catch
+            //{
                 
-                return View("Create",User);
+            //    return View("Create",User);
+            //}
+            user User = customerInfoRepo.GetCustomer(username);
+            if (User == null || Roles.IsUserInRole(User.username, "admin") == true)
+            {
+                return RedirectToAction("NotFount");
             }
+
+            Roles.AddUserToRole(User.username, "admin");
+            customerInfoRepo.save();
+            return RedirectToAction("Created");
         }
         
         //
         // GET: /Customer/Edit/5
  
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string username)
         {
-            user User = customerInfoRepo.GetCustomer(id);
+            user User = customerInfoRepo.GetCustomer(username);
             return View("Edit",User);
         }
 
@@ -85,9 +111,9 @@ namespace englishsnsVS10.DAOimpl
         // POST: /Customer/Edit/5
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string username, FormCollection collection)
         {
-            user User = customerInfoRepo.GetCustomer(id);
+            user User = customerInfoRepo.GetCustomer(username);
             try
             {
                 // TODO: Add update logic here
@@ -96,8 +122,6 @@ namespace englishsnsVS10.DAOimpl
                 UpdateModel(User);
                 customerInfoRepo.save();
                 //User.id = Request.Form["CustomerID"];
-
-
                 return RedirectToAction("Details", new { id = User.id });
             }
             catch
@@ -110,12 +134,12 @@ namespace englishsnsVS10.DAOimpl
         //
         // GET: /Customer/Delete/5
  
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string username)
         {
-            user User = customerInfoRepo.GetCustomer(id);
+            user User = customerInfoRepo.GetCustomer(username);
             if (User == null)
             {
-                return View("NotFound");
+                return RedirectToAction("NotFound");
             }
             else
             {
@@ -128,26 +152,18 @@ namespace englishsnsVS10.DAOimpl
         // POST: /Customer/Delete/5
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string username, FormCollection collection)
         {
-            user User = customerInfoRepo.GetCustomer(id);
-            if (User == null)
+            user User = customerInfoRepo.GetCustomer(username);
+            if (User == null || Roles.IsUserInRole(User.username, "admin") == false)
             {
-                return View("NotFount");
+                return RedirectToAction("NotFount");
             }
-            customerInfoRepo.DelelteCustomer(User);
+
+            Roles.RemoveUserFromRole(User.username, "admin");
             customerInfoRepo.save();
-            return View("Deleted");
-            //try
-            //{
-            //    // TODO: Add delete logic here
- 
-            //    return RedirectToAction("Index");
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
+            return RedirectToAction("Deleted");
+            //return View("Deleted");
         }
     }
 }
