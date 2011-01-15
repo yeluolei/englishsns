@@ -66,7 +66,7 @@ namespace englishsnsVS10.Controllers
             //RSAParameters para = new RSAParameters();
             //var result = System.Text.Encoding.ASCII.GetString(rsa.Decrypt(System.Text.Encoding.ASCII.GetBytes(auth), false));
          
-            if (customerInfoRepo.GetCustomer(model.uid).Count() == 0)
+            if (customerInfoRepo.GetCustomer(model.uid) == null)
             {
                 user user = new user();
                 user.username = model.uid;

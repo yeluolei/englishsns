@@ -7,41 +7,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Create</h2>
-
-    <% using (Html.BeginForm()) {%>
-        <%: Html.ValidationSummary(true) %>
-
-        <fieldset>
-            <legend>Fields</legend>
-            
-            <p>
-                <label for="CustomerID">Customer ID:</label>
-                <%=Html.TextArea("CustomerID") %>
-                <%=Html.ValidationMessage("CustomerID","*") %>
-            </p>
-            <p>
-                <label for="Username">Username:</label>
-                <%=Html.TextArea("Username") %>
-                <%=Html.ValidationMessage("Username","*") %>
-            </p>
-            <p>
-                <label for="Name">Name:</label>
-                <%=Html.TextArea("Name") %>
-                <%=Html.ValidationMessage("Name","*") %>
-            </p>
-
-            
-            <p>
-                <input type="submit" value="Create" />
-            </p>
-        </fieldset>
-
-    <% } %>
-
     <div>
-        <%: Html.ActionLink("Back to List", "Index") %>
+    <p>Please confirm you want to let him or her just to be a usual customer :
+    <i><%=Html.Encode(Model.userId) %></i>
+    <i><%=Html.Encode(Model.username) %></i>
+    <i><%=Html.Encode(Model.name) %>?</i>
+    </p>
     </div>
-
+    <%using (Html.BeginForm())
+      { %>
+    <input name="confirmButton"type="submit"value="Create"/>
+    <%} %>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">

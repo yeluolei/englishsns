@@ -8,7 +8,7 @@
 
     <h2>Delete</h2>
     <div>
-    <p>Please confirm you want to cancel the customer :
+    <p>Please confirm you want to let him or her just to be a usual customer :
     <i><%=Html.Encode(Model.userId) %></i>
     <i><%=Html.Encode(Model.username) %></i>
     <i><%=Html.Encode(Model.name) %>?</i>

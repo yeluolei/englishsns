@@ -29,7 +29,7 @@ namespace englishsnsVS10.Controllers
             sh.sharecontent = form["comment"];
             sh.sharetime = DateTime.Now;
             var temp = cr.GetCustomer(User.Identity.Name);
-            temp.First().shares.Add(sh);
+            temp.shares.Add(sh);
             cr.save();
             Response.Write("Success");
         }

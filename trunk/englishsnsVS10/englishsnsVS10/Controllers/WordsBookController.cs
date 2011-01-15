@@ -23,7 +23,7 @@ namespace englishsnsVS10.Controllers
         {
             wordsbook wb = new wordsbook();
             wb.wordname = wd;
-            user u = customerRepo.GetCustomer(User.Identity.Name).First();
+            user u = customerRepo.GetCustomer(User.Identity.Name);
             wb.userid = u.id;
             customerRepo.AddWordsbook(wb);
             customerRepo.save();
@@ -32,7 +32,7 @@ namespace englishsnsVS10.Controllers
 
         public ActionResult GetWordsBook()
         {
-            user u = customerRepo.GetCustomer(User.Identity.Name).First();
+            user u = customerRepo.GetCustomer(User.Identity.Name);
             var wordsbookCollect = customerRepo.GetWordsBook(u.id).ToList();
             return View(wordsbookCollect);
         }

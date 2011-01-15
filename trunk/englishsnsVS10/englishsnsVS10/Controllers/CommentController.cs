@@ -28,7 +28,7 @@ namespace englishsnsVS10.Controllers
             c.shareid = id;
             c.comment1 = form["content"];
             c.time = DateTime.Now;
-            user u = customerRepo.GetCustomer(User.Identity.Name).First();
+            user u = customerRepo.GetCustomer(User.Identity.Name);
             u.comments.Add(c);
             customerRepo.save();
 
