@@ -40,7 +40,7 @@ namespace englishsnsVS10.Translate
                 }
                 result = ProcessResult(result);
             }catch(Exception){
-                result = "Error,can't get the translate result";
+                result = "Error,can't get the translate result from Google Translate";
             }
 
             return result;

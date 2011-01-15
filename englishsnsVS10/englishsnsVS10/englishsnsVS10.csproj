@@ -130,6 +130,7 @@
     <Compile Include="Translate\GoogleTranslateAdapter.cs" />
     <Compile Include="Translate\ITranslateBoundary.cs" />
     <Compile Include="Translate\GoogleTranslateBoundary.cs" />
+    <Compile Include="Translate\TranslateFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\englishdict.mdf" />
@@ -168,7 +169,7 @@
     <Content Include="Views\LookUp\Index.aspx" />
     <Content Include="Views\Shared\Success.aspx" />
     <Content Include="Views\Share\Index.aspx" />
-    <Content Include="Views\Translation\getTranslate.aspx" />
+    <Content Include="Views\Translation\TranslateResult.aspx" />
     <Content Include="Views\Translation\Index.aspx" />
     <Content Include="Views\WordsBook\GetWordsBook.aspx" />
     <Content Include="Web.config" />
