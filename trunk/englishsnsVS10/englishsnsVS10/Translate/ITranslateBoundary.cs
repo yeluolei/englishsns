@@ -1,7 +1,7 @@
 ﻿using System;
 namespace englishsnsVS10.Translate
 {
-    interface ITranslateBoundary
+    public interface ITranslateBoundary
     {
         string requestTranslate(string SentenceEncode,string type);
     }

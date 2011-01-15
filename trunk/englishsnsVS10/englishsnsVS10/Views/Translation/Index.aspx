@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Index
+	整句翻译
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Index</h2>
-        <% using (Html.BeginForm("getTranslate", "Translation", FormMethod.Post))
+        <% using (Html.BeginForm("TranslateResult", "Translation", FormMethod.Post))
        { %>
     <p>
         <input class="editor-field" size="69" maxlength="250" name="Sentence" type="text" /></p>
