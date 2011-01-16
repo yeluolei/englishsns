@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<englishsnsVS10.Models.UserModels>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<englishsnsVS10.datacontext.user>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Index
@@ -20,6 +20,9 @@
             <th class="style3">
                 name
             </th>
+            <th class="style4">
+                type
+            </th>
         </tr>
 
     <% foreach (var item in Model) { %>
@@ -32,13 +35,16 @@
                 <%: Html.ActionLink("Delete", "Delete", new { username = item.username })%>
             </td>
             <td class="style1">
-                <%: item.userId %>
+                <%: item.id %>
             </td>
             <td class="style2">
                 <%: item.username %>
             </td>
             <td class="style3">
                 <%: item.name %>
+            </td>
+            <td class="style4">
+            <%: Roles.IsUserInRole(item.username, "admin")?"admin":"customer" %>
             </td>
         </tr>
     
