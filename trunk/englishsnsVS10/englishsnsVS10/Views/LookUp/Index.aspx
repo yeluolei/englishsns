@@ -43,7 +43,7 @@
                 <%:Html.ActionLink("分享", "Index", "Share", new { id = exp.id.ToString() }, new { })%>
             </td>
             <td style="width:40px">
-                <%:Html.ActionLink("查看历史", "history", "Lookup", new { id = exp.id.ToString() }, new { })%>
+                <%:Html.ActionLink("查看历史", "history", "EditWord", new { id = exp.id.ToString() }, new { })%>
             </td>
             <%if (Request.IsAuthenticated)
               { %>
