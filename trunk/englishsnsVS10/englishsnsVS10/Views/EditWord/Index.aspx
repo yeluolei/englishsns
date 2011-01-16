@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Index</h2>
+    <h2><%:ViewData["word"] %></h2>
     
         <% using (Html.BeginForm("Index", "editword", FormMethod.Post))
        { %>

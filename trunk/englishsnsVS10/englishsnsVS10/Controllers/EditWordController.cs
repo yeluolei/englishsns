@@ -18,8 +18,11 @@ namespace englishsnsVS10.Controllers
 
         public ActionResult Index(int id)
         {
-            string expcontent = englishRepo.GetExplanation(id).expcontent;
+            explanation exp = englishRepo.GetExplanation(id);
+            string expcontent = exp.expcontent;
+            string word = exp.wordname;
             ViewData["expcontent"] = expcontent;
+            ViewData["word"] = word;
             return View();
         }
 
@@ -102,7 +105,7 @@ namespace englishsnsVS10.Controllers
             if (exp.modifier != "System")
             {
                 exp.active = -1;
-                var exps = englishRepo.GetHistory(exp);
+                //var exps = englishRepo.GetHistory(exp);
                 englishRepo.Save();
             }
             return View();
