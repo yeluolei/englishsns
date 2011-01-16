@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using englishsnsVS10.DAOimpl;
 using englishsnsVS10.datacontext;
+using englishsnsVS10.Models;
 
 namespace englishsnsVS10.Controllers
 {
@@ -105,6 +106,14 @@ namespace englishsnsVS10.Controllers
                 englishRepo.Save();
             }
             return View();
+        }
+
+        public ActionResult History(int id)
+        {
+            var exp = englishRepo.GetExplanation(id);
+            var history = englishRepo.GetHistory(exp);
+            var result = new LookUpWordResult(exp.wordname, history);
+            return View(result);
         }
 
     }
