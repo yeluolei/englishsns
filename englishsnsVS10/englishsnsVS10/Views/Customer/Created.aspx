@@ -11,7 +11,7 @@
     <p>Created successfully.</p>
     </div>
     <div>
-    <p><a href="/Views/Customer/Index">Click for Upcoming Customer</a></p>
+    <p><a href="/Views/Customer/Index.aspx">Click for Upcoming Customer</a></p>
     </div>
 
 </asp:Content>

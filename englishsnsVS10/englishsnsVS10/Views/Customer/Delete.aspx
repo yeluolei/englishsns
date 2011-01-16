@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<englishsnsVS10.Models.UserModels>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<englishsnsVS10.datacontext.user>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Delete
@@ -9,7 +9,7 @@
     <h2>Delete</h2>
     <div>
     <p>Please confirm you want to let him or her just to be a usual customer :
-    <i><%=Html.Encode(Model.userId) %></i>
+    <i><%=Html.Encode(Model.id) %></i>
     <i><%=Html.Encode(Model.username) %></i>
     <i><%=Html.Encode(Model.name) %>?</i>
     </p>

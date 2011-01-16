@@ -53,13 +53,13 @@ namespace englishsnsVS10.Controllers
             //user User = new user();
             //return View("Create",User);
             user User = customerInfoRepo.GetCustomer(username);
-            if (User == null)
+            if (User == null || Roles.IsUserInRole(User.username, "admin") == true)
             {
-                return RedirectToAction("NotFound");
+                return View("NoteFound");
             }
             else
             {
-                return View("Creat", User);
+                return View("Create", User);
             }
         } 
 
@@ -90,12 +90,12 @@ namespace englishsnsVS10.Controllers
             user User = customerInfoRepo.GetCustomer(username);
             if (User == null || Roles.IsUserInRole(User.username, "admin") == true)
             {
-                return RedirectToAction("NotFount");
+                return View("NoteFount");
             }
 
             Roles.AddUserToRole(User.username, "admin");
             customerInfoRepo.save();
-            return RedirectToAction("Created");
+            return View("Created");
         }
         
         //
@@ -137,9 +137,9 @@ namespace englishsnsVS10.Controllers
         public ActionResult Delete(string username)
         {
             user User = customerInfoRepo.GetCustomer(username);
-            if (User == null)
+            if (User == null || Roles.IsUserInRole(User.username, "admin") == false)
             {
-                return RedirectToAction("NotFound");
+                return View("NoteFound");
             }
             else
             {
@@ -157,13 +157,13 @@ namespace englishsnsVS10.Controllers
             user User = customerInfoRepo.GetCustomer(username);
             if (User == null || Roles.IsUserInRole(User.username, "admin") == false)
             {
-                return RedirectToAction("NotFount");
+                return View("NoteFound");
             }
 
             Roles.RemoveUserFromRole(User.username, "admin");
             customerInfoRepo.save();
-            return RedirectToAction("Deleted");
-            //return View("Deleted");
+            //return RedirectToAction("Deleted");
+            return View("Deleted");
         }
     }
 }
