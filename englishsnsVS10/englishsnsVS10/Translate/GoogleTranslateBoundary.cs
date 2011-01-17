@@ -8,8 +8,10 @@ using System.IO;
 using System.Web.Script.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Runtime.Serialization;
-using System.ServiceModel.Web;
+using System.Text.RegularExpressions;
 using System.Text;
+using System.Json;
+using System.ServiceModel.Web;
 
 namespace englishsnsVS10.Translate
 {
@@ -55,6 +57,19 @@ namespace englishsnsVS10.Translate
 
             //return result.data.translations[0].translatedText;
 
+            //try
+            //{
+            //    JsonObject result = JsonObject.Parse(resultBefo) as JsonObject;
+
+
+            //    string returnresult;
+            //    returnresult = result["data"]["translations"][0]["translatedText"];
+            //    return returnresult;
+            //}
+            //catch (Exception e)
+            //{
+            //    throw e;
+            //}
             String result;
             String Temp;
             Temp = resultBefo.Substring(0, resultBefo.LastIndexOf('\"'));
@@ -66,7 +81,7 @@ namespace englishsnsVS10.Translate
 
 }
 
-//[DataContract(Namespace ="localhost:7001")]
+//[DataContract(Namespace = "localhost:7001")]
 //class GoogleTranslateData
 //{
 //    [DataMember(Order = 0)]
@@ -77,14 +92,14 @@ namespace englishsnsVS10.Translate
 //class GoogleTranslations
 //{
 //    [DataMember(Order = 0)]
-//    public TranslateResult[] translations{get;set;}
+//    public TranslateResult[] translations { get; set; }
 //}
 
-//[DataContract(Namespace="localhost:7001")]
+//[DataContract(Namespace = "localhost:7001")]
 //class TranslateResult
 //{
 //    [DataMember(Order = 0)]
-//   public String translatedText{get;set;}
+//    public String translatedText { get; set; }
 //    //[DataMember(Order=1)]
 //    //public String detectedSourceLanguage{get;set;}
 //}

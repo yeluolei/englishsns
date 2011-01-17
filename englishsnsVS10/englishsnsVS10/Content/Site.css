@@ -276,7 +276,6 @@ page width. Or, you can specify an exact pixel width. */
     background-position: 450px center;
     color: #999999;
     margin-right: 0 auto;
-    background-image: url('../images/logo.png');
     background-repeat: no-repeat;
 }
 .copyright p
