@@ -307,7 +307,7 @@ namespace englishsnsVS10.datacontext
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createdata", DbType="DateTime NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createdata", AutoSync=AutoSync.Always, DbType="DateTime NOT NULL", IsDbGenerated=true)]
 		public System.DateTime createdata
 		{
 			get

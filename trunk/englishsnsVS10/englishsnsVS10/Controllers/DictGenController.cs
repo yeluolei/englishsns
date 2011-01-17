@@ -13,10 +13,10 @@ namespace englishsnsVS10.Controllers
 {
     public class DictGenController : Controller
     {
-        //
-        // GET: /DictGen/
         englishdictDataContext db = new englishdictDataContext();
-        public ActionResult Index()
+        //
+        // GET: /DictGen/GenFromFile
+        public ActionResult GenFromFile()
         { 
             var allexp = from exp in db.explanations
                          select exp;
@@ -58,6 +58,26 @@ namespace englishsnsVS10.Controllers
             return View();
             
         }
-
+        //
+        // GET: /DictGen/SplitIt
+        public ActionResult SplitIt() {
+            var allexp = from exp in db.explanations
+                         select exp;
+            foreach(var oldExp in allexp) {
+                Regex split = new Regex(@"\b+\d+\b+");
+                String[] newExps = split.Split(oldExp.expcontent);
+                
+                foreach(string s in newExps) {
+                    explanation newExp = new explanation();
+                    
+                    newExp.expcontent = s;
+                    newExp.word = oldExp.word;
+                    db.explanations.InsertOnSubmit(newExp);
+                }
+                db.explanations.DeleteOnSubmit(oldExp);
+                db.SubmitChanges();
+            }
+            return View();
+        }
     }
 }
