@@ -14,6 +14,7 @@ namespace englishsnsVS10.Controllers
         // GET: /Follow/
 
         CustomerInfoRepo customerRepo;
+
         public ActionResult Index()
         {
             return View();
