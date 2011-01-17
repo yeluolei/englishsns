@@ -29,7 +29,7 @@
         border-style:dotted;
         color:#C9D7F1;
         width:100%;
-        size:2px;
+        size:1px;
         }
 </style>
 </asp:Content>
