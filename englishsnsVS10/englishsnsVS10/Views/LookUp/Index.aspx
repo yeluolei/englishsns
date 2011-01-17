@@ -4,7 +4,7 @@
     <link href="/Content/LookUpResult.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Index
+    查询结果
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <!-- <h2>Index</h2> -->
@@ -39,10 +39,10 @@
                     <%=Html.Encode(exp.expcontent)%>
                 </p>
             </td>
-            <td style="width:40px">
+            <td style="width:80px">
                 <%:Html.ActionLink("分享", "Index", "Share", new { id = exp.id.ToString() }, new { })%>
             </td>
-            <td style="width:40px">
+            <td style="width:80px">
                 <%:Html.ActionLink("查看历史", "history", "EditWord", new { id = exp.id.ToString() }, new { })%>
             </td>
             <%if (Request.IsAuthenticated)
