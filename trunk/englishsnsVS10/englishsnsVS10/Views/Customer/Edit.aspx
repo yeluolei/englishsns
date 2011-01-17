@@ -14,19 +14,21 @@
         <fieldset>
             <legend>Fields</legend>
             
-            <p>
+<%--            <p>
                 <label for="CustomerID">Customer ID:</label>
-                <%=Html.TextArea("CustomerID") %>
+                <%=Html.TextBox("CustomerID",Model.userId)%>
                 <%=Html.ValidationMessage("CustomerID","*") %>
             </p>
             <p>
                 <label for="Username">Username:</label>
-                <%=Html.TextArea("Username") %>
+                <%=Html.TextBox("Username",Model.username) %>
                 <%=Html.ValidationMessage("Username","*") %>
-            </p>
+            </p>--%>
+            <p>UserName:<%=Model.username%></p>
+            <p>UserID:<%=Model.userId %></p>
             <p>
                 <label for="Name">Name:</label>
-                <%=Html.TextArea("Name") %>
+                <%=Html.TextBox("Name",Model.name) %>
                 <%=Html.ValidationMessage("Name","*") %>
             </p>
             

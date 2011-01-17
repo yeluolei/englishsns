@@ -21,12 +21,13 @@ namespace englishsnsVS10.Controllers
         }
 
         [HttpPost]
-        public void Index(FormCollection form)
+        public ActionResult Index(FormCollection form)
         {
             string follow = form["name"];
             string follower = User.Identity.Name;
             customerRepo.AddFollower(follow, follower);
             customerRepo.save();
+            return View();
         }
 
     }

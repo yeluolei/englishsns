@@ -54,22 +54,18 @@
         </div>
         <div class="MenuPage">
             <ul id="menu">
-                <li class="Menu1">
-                    <%: Html.ActionLink("整句翻译", "Index", "Translation")%></li>
-                <%if (Page.User.IsInRole("admin"))
-                  { %>
-                <li class="Menu1">
-                    <%: Html.ActionLink("用户管理", "Index", "Customer")%></li>
-                <%} %>
-                <%if (Request.IsAuthenticated)
-                  { %>
-                <li class="Menu3">
+                <li class="Menu5">
                     <%: Html.ActionLink("Follow", "Index", "Follow")%></li>
-                <%} %>
+                <li class="Menu4">
+                    <%: Html.ActionLink("整句翻译", "Index", "Translation")%></li>
+                    <%if(Page.User.IsInRole("admin")){ %>
                 <li class="Menu3">
-                    <%: Html.ActionLink("About", "About", "Home")%></li>
+                    <%: Html.ActionLink("用户管理", "Index", "Customer")%></li>
+                    <%} %>
+                <li class="Menu2">
+                    <%: Html.ActionLink("关于", "About", "Home")%></li>
                 <li class="Menu1">
-                    <%: Html.ActionLink("Home", "Index", "Home")%></li>
+                    <%: Html.ActionLink("主页", "Index", "Home")%></li>
             </ul>
         </div>
         <div id="main">

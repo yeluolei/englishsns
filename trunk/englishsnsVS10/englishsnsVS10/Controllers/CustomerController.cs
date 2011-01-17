@@ -104,7 +104,8 @@ namespace englishsnsVS10.Controllers
         public ActionResult Edit(string username)
         {
             user User = customerInfoRepo.GetCustomer(username);
-            return View("Edit",User);
+            UserModels usermodel = new UserModels(User.id,User.username,User.name);
+            return View("Edit",usermodel);
         }
 
         //
@@ -117,7 +118,6 @@ namespace englishsnsVS10.Controllers
             try
             {
                 // TODO: Add update logic here
-                
 
                 UpdateModel(User);
                 customerInfoRepo.save();

@@ -50,7 +50,6 @@
                     <%: Html.PasswordFor(m => m.ConfirmPassword) %>
                     <%: Html.ValidationMessageFor(m => m.ConfirmPassword) %>
                 </div>
-                
                 <p>
                     <input type="submit" value="Register" />
                 </p>

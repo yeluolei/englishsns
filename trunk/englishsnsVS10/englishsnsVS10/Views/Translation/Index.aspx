@@ -6,16 +6,14 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Index</h2>
+    <h2>整句翻译</h2>
         <% using (Html.BeginForm("TranslateResult", "Translation", FormMethod.Post))
        { %>
-    <p>
-        <input class="editor-field" size="69" maxlength="250" name="Sentence" type="text" /></p>
-    <p>
-        <input name="languagechoose" type="radio" value="ZH_EN" />中文->英文</p>
-    <p>
-        <input name="languagechoose" type="radio" value="EN_ZH" checked="true" />英文->中文</p>
-    <input title="Search" value="整句翻译" type="submit" />
+        <center><p>
+        <input class="editor-field" size="69" maxlength="250" name="Sentence" type="text" /><input title="Search" value="整句翻译" type="submit" /></p>
+        <input name="languagechoose" type="radio" value="ZH_EN" />中文->英文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="languagechoose" type="radio" value="EN_ZH" checked="true"/>英文->中文
+        </center>
     <% } %>
 
 </asp:Content>

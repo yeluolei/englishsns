@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>翻译结果for:</h2>
+    <h2>翻译结果:</h2>
     <p><%=Html.Label(Model.TranslateSource)%></p>
     <hr />
     <br />
@@ -26,10 +26,12 @@
         }
     hr
     {
-        border-style:dotted;
+        margin-top:10px;
+        border-style:solid;
         color:#C9D7F1;
         width:100%;
-        size:1px;
-        }
+        font-size:1px;
+        border-top:1px;
+    }
 </style>
 </asp:Content>

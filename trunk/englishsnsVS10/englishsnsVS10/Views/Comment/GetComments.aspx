@@ -10,7 +10,6 @@
 
     <table>
         <tr>
-            <th></th>
             <th>
                 CommentId
             </th>
@@ -20,22 +19,12 @@
             <th>
                 time
             </th>
-            <th>
-                shareId
-            </th>
-            <th>
-                userId
-            </th>
+            <th></th>
         </tr>
 
     <% foreach (var item in Model) { %>
     
         <tr>
-            <td>
-                <%: Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) %> |
-                <%: Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })%> |
-                <%: Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })%>
-            </td>
             <td>
                 <%: item.user.name %>
             </td>
@@ -46,10 +35,9 @@
                 <%: String.Format("{0:g}", item.time) %>
             </td>
             <td>
-                <%: item.shareid.ToString() %>
-            </td>
-            <td>
-                <%: item.userid.ToString() %>
+                <%: Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) %> |
+                <%: Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })%> |
+                <%: Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })%>
             </td>
         </tr>
     
@@ -60,7 +48,6 @@
     <p>
         <%: Html.ActionLink("Create New", "Create") %>
     </p>
-
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="HeadContent" runat="server">
