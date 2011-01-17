@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Index</h2>
+    <h2>评论</h2>
         <% using (Html.BeginForm("Index", "Comment", FormMethod.Post))
        { %>
     <p><textarea name="content" style="width:300px; height:150px"></textarea></p>

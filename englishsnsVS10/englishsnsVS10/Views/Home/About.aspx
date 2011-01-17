@@ -5,8 +5,8 @@
 </asp:Content>
 
 <asp:Content ID="aboutContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>About</h2>
+    <h2>关于</h2>
     <p>
-        Put content here.
+        English SNS是一个集社交与英语学习为一体的网站。欢迎使用！
     </p>
 </asp:Content>

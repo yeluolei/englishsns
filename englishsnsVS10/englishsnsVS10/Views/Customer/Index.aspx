@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<englishsnsVS10.datacontext.user>>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Index
+	用户管理
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Index</h2>
+    <h2>用户管理</h2>
 
     <table>
         <tr>
@@ -29,9 +29,9 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) %> |
-                <%: Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })%> |
-                <%: Html.ActionLink("Create", "Create", new { username = item.username })%> |
+                <%: Html.ActionLink("Edit", "Edit", new { username = item.username })%> |
+                <%: Html.ActionLink("Details", "Details", new { username = item.username })%> |
+                <%--<%: Html.ActionLink("Create", "Create", new { username = item.username })%> |--%>
                 <%: Html.ActionLink("Delete", "Delete", new { username = item.username })%>
             </td>
             <td class="style1">
