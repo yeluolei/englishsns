@@ -111,6 +111,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomerInfo.dbml</DependentUpon>
     </Compile>
+    <Compile Include="datacontext\explanation.cs" />
     <Compile Include="Models\CommentModels.cs" />
     <Compile Include="Models\SentenceModels.cs" />
     <Compile Include="Models\ShareModels.cs" />
