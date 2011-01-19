@@ -42,39 +42,24 @@ namespace englishsnsVS10.Controllers
 
         public ActionResult LogOn()
         {
-            string test = "时尚";
-            string temp1 = Server.UrlEncode(test);
-            string temp2 = HttpUtility.UrlEncode(test);
             //return View();
-            string note = GetRandomString(10);
-            Response.Cookies["loginnote"].Value = note;
-            Response.Cookies["loginnote"].Expires = DateTime.Now.AddHours(1.0);
-            return Redirect("http://jaccount.sjtu.in/index.php?reurl=http://localhost:12183/account/logon&authnote=" + note);
+            if (Request.IsAuthenticated == false)
+            {
+                string note = GetRandomString(10);
+                Response.Cookies["loginnote"].Value = note;
+                Response.Cookies["loginnote"].Expires = DateTime.Now.AddHours(1.0);
+                return Redirect("http://jaccount.sjtu.in/index.php?reurl=http://localhost:12183/account/logon&authnote=" + note);
+            }
+            else
+                return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string ticket)
         {
-            //SHA1 sha = new SHA1Managed();
-
             ticket = Server.UrlEncode(ticket);
             string mark = Request.Cookies["loginnote"].Value;
-            //var result = sha.ComputeHash(System.Text.Encoding.ASCII.GetBytes(returnauth));
-
-            //System.IO.StreamReader sr = new System.IO.StreamReader(Server.MapPath(@"..\private.key"));
-            //string publickey = sr.ReadToEnd();
-            //sr.Close();
-
-            //RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-
-            //rsa.ImportParameters(ConvertFromPemPrivateKey(publickey));
-
-            //var temp = rsa.ToXmlString(false);
-            //string temp = rsa.ToXmlString(true);
-            //rsa.FromXmlString(publickey);
-            //RSAParameters para = new RSAParameters();
-            // var result = System.Text.Encoding.ASCII.GetString(rsa.Decrypt(System.Text.Encoding.ASCII.GetBytes(auth), false));
-            
+       
             if (validation.validate(mark, ticket))
             {
                 if (customerInfoRepo.GetCustomer(model.uid) == null)
