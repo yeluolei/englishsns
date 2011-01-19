@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using englishsnsVS10.DAOimpl;
 using englishsnsVS10.datacontext;
 using englishsnsVS10.Models;
+using englishsnsVS10.SystemInterfaces;
 
 
 namespace englishsnsVS10.Controllers
@@ -19,8 +20,8 @@ namespace englishsnsVS10.Controllers
             set;
         }
 
-        CustomerInfoRepo customerRepo;
-        EnglishDictRepo englishDictRepo;
+        ICustomerInfoRepo customerRepo;
+        IEnglishDictRepo englishDictRepo;
 
         public ActionResult Index()
         {

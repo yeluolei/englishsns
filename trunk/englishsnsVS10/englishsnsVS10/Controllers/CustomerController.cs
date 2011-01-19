@@ -12,12 +12,13 @@ using System.Security.Principal;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Security.Cryptography;
+using englishsnsVS10.SystemInterfaces;
 
 namespace englishsnsVS10.Controllers
 {
     public class CustomerController : Controller
     {
-        CustomerInfoRepo customerInfoRepo = new CustomerInfoRepo();
+        ICustomerInfoRepo customerInfoRepo;
 
         //
         // GET: /Customer/

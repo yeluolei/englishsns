@@ -11,7 +11,7 @@
    
     </object>
     <object type="englishsnsVS10.Controllers.CustomerController, englishsnsVS10" singleton="false" >
-
+        <property name="customerInfoRepo" ref="myCustomerInfoRepo" />
     </object>
 
     <object type="englishsnsVS10.Controllers.TranslationController, englishsnsVS10" singleton="false" >
