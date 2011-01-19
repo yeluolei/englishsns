@@ -39,9 +39,12 @@
                     <%=Html.Encode(exp.expcontent)%>
                 </p>
             </td>
+            <%if (Request.IsAuthenticated)
+              { %>
             <td style="width:80px">
                 <%:Html.ActionLink("分享", "Index", "Share", new { id = exp.id.ToString() }, new { })%>
             </td>
+            <%} %>
             <td style="width:80px">
                 <%:Html.ActionLink("查看历史", "history", "EditWord", new { id = exp.id.ToString() }, new { })%>
             </td>

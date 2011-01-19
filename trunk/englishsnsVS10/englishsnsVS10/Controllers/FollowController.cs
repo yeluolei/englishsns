@@ -30,5 +30,13 @@ namespace englishsnsVS10.Controllers
             return View();
         }
 
+        public ActionResult AllFollower()
+        {
+            string name = User.Identity.Name;
+            user u = customerRepo.GetCustomer(name);
+            var follows = customerRepo.GetFollowedPeople(u);
+            return View(follows);      
+        }
+
     }
 }
