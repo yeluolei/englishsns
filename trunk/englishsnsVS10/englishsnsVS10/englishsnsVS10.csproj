@@ -129,12 +129,16 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="DAOimpl\EnglishDictRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemInterfaces\ILoginValidation.cs" />
     <Compile Include="Translate\BingTranslateAdapter.cs" />
     <Compile Include="Translate\BingTranslateBoundary.cs" />
     <Compile Include="Translate\GoogleTranslateAdapter.cs" />
     <Compile Include="Translate\ITranslateAdapter.cs" />
     <Compile Include="Translate\GoogleTranslateBoundary.cs" />
     <Compile Include="Translate\TranslateFactory.cs" />
+    <Compile Include="ValidtionService\LocalValidate.cs" />
+    <Compile Include="ValidtionService\RemoteValidate.cs" />
+    <Compile Include="ValidtionService\ValidationProxy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\englishdict.mdf" />

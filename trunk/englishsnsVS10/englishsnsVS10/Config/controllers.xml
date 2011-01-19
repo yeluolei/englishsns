@@ -39,11 +39,17 @@
 
     <object type="englishsnsVS10.Controllers.AccountController, englishsnsVS10" singleton="false" >
         <property name="customerInfoRepo" ref="myCustomerInfoRepo"/>
+        <property name="validation" ref="myvalidationProxy"/>
     </object>
 
     <object id="myCustomerInfoRepo" type="englishsnsVS10.DAOimpl.CustomerInfoRepo, englishsnsVS10" singleton="false" >
 
     </object>
+
+    <object id="myvalidationProxy" type="englishsnsVS10.ValidtionService.ValidationProxy, englishsnsVS10" singleton="false" >
+
+    </object>
+    
     <object id="myEnglishDictRepo" type="englishsnsVS10.DAOimpl.EnglishDictRepo, englishsnsVS10" singleton="false" >
 
     </object>
