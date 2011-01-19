@@ -22,16 +22,17 @@ namespace englishsnsVS10.Controllers
         }
 
         [HttpPost]
-        public void Index(int id, FormCollection form)
+        public ActionResult Index(int id, FormCollection form)
         {
             share sh = new share();
             sh.explanationId = id;
             sh.sharecontent = form["comment"];
             sh.sharetime = DateTime.Now;
-            var temp = cr.GetCustomer(User.Identity.Name);
-            temp.shares.Add(sh);
+            var u = cr.GetCustomer(User.Identity.Name);
+            //u.shares.Add(sh);
+            cr.AddShare(u, sh);
             cr.save();
-            Response.Write("Success");
+            return View("success");
         }
     }
 }

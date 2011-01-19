@@ -22,17 +22,17 @@ namespace englishsnsVS10.Controllers
         }
 
         [HttpPost]
-        public void Index(int id, FormCollection form)
+        public ActionResult Index(int id, FormCollection form)
         {
             comment c = new comment();
             c.shareid = id;
             c.comment1 = form["content"];
             c.time = DateTime.Now;
             user u = customerRepo.GetCustomer(User.Identity.Name);
-            u.comments.Add(c);
+            customerRepo.AddComment(c, u);
+            //u.comments.Add(c);
             customerRepo.save();
-
-            Response.Write("sucess");
+            return View("Success");
         }
 
         public ActionResult GetComments(int id)

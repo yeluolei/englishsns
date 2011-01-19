@@ -47,9 +47,9 @@ namespace englishsnsVS10.DAOimpl
             db.users.DeleteOnSubmit(user);
         }//just for admin
 
-        public void addcoments(CommentModels comment)
+        public void AddComment(comment c,user  u)
         {
-
+            u.comments.Add(c);
         }
 
         public void addshare(ShareModels share)
@@ -123,6 +123,10 @@ namespace englishsnsVS10.DAOimpl
             db.followers.InsertOnSubmit(followerInstance);
         }
 
+        public void AddShare(user u, share s)
+        {
+            u.shares.Add(s);
+        }
         /// <summary>
         /// Save data to the database
         /// </summary>
