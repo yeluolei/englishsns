@@ -21,7 +21,7 @@ namespace englishsnsVS10.Controllers
     [HandleError]
     public class AccountController : Controller
     {
-        public CustomerInfoRepo customerInfoRepo { get; set; }
+        ICustomerInfoRepo customerInfoRepo { get; set; }
         public IFormsAuthenticationService FormsService { get; set; }
         public IMembershipService MembershipService { get; set; }
 

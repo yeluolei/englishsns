@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using englishsnsVS10.datacontext;
 using englishsnsVS10.DAOimpl;
+using englishsnsVS10.SystemInterfaces;
 
 namespace englishsnsVS10.Controllers
 {
@@ -13,7 +14,7 @@ namespace englishsnsVS10.Controllers
         //
         // GET: /Share/
 
-        CustomerInfoRepo cr;
+        ICustomerInfoRepo cr;
 
 
         public ActionResult Index(int id)

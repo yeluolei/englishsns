@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using englishsnsVS10.datacontext;
 using englishsnsVS10.Models;
+using englishsnsVS10.SystemInterfaces;
 
 namespace englishsnsVS10.DAOimpl
 {
-    public class CustomerInfoRepo
+    public class CustomerInfoRepo : ICustomerInfoRepo
     {
         private CustomerInfoDataContext db = new CustomerInfoDataContext();
 
