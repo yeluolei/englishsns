@@ -162,6 +162,7 @@
     <Content Include="Global.asax" />
     <Content Include="Views\Comment\GetComments.aspx" />
     <Content Include="Views\Comment\Index.aspx" />
+    <Content Include="Views\Comment\Success.aspx" />
     <Content Include="Views\Customer\Create.aspx" />
     <Content Include="Views\Customer\Created.aspx" />
     <Content Include="Views\Customer\Delete.aspx" />
@@ -178,6 +179,7 @@
     <Content Include="Views\LookUp\Index.aspx" />
     <Content Include="Views\Shared\Success.aspx" />
     <Content Include="Views\Share\Index.aspx" />
+    <Content Include="Views\Share\Success.aspx" />
     <Content Include="Views\Translation\TranslateResult.aspx" />
     <Content Include="Views\Translation\Index.aspx" />
     <Content Include="Views\WordsBook\GetWordsBook.aspx" />
