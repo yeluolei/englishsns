@@ -28,7 +28,7 @@ namespace englishsnsVS10.Controllers
             wb.userid = u.id;
             customerRepo.AddWordsbook(wb);
             customerRepo.save();
-            return Redirect("shared/success");
+            return View("success");
         }
 
         public ActionResult GetWordsBook()

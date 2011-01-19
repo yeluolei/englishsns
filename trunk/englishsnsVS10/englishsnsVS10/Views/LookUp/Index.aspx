@@ -19,7 +19,7 @@
         <%=Html.Label(Model.queryWord) %></h2>
         <%if (Request.IsAuthenticated)
           { %>
-        <%:Html.ActionLink("加入单词簿", "Add", "wordsbook", new { wd = Model.queryWord }, new { })%>
+        <%=Html.ActionLink("加入单词簿", "Add", "wordsbook", new { wd = Model.queryWord }, new { })%>
         <%} %>
     <% var result = Model.explanations;
        int i = 1;
