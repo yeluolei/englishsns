@@ -110,7 +110,7 @@ namespace englishsnsVS10.Controllers
                 //var exps = englishRepo.GetHistory(exp);
                 englishRepo.Save();
             }
-            return View();
+            return Redirect("/lookup/index?queryword=" + exp.wordname); ;
         }
 
         public ActionResult History(int id)
