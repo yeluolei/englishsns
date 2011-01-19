@@ -9,7 +9,7 @@
     <h2>NotFound</h2>
     <p>Sorry - but the customer you requested doesn't exist or was deleted.</p>
     <div>
-    <p><a href="/Views/Customer/Index.aspx">Click for Upcoming Customer</a></p>
+    <%: Html.ActionLink("Back to List", "Index") %>
     </div>
 </asp:Content>
 

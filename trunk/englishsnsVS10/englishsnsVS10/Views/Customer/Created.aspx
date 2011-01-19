@@ -11,7 +11,7 @@
     <p>Created successfully.</p>
     </div>
     <div>
-    <p><a href="/Views/Customer/Index.aspx">Click for Upcoming Customer</a></p>
+    <%: Html.ActionLink("Back to List", "Index") %>
     </div>
 
 </asp:Content>
