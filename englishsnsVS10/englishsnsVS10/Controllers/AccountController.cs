@@ -50,12 +50,12 @@ namespace englishsnsVS10.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl, string auth)
+        public ActionResult LogOn(LogOnModel model, string returnUrl, string ticket)
         {
             //SHA1 sha = new SHA1Managed();
 
-            auth = Server.UrlEncode(auth);
-            string returnauth = Request.Cookies["loginnote"].Value;
+            ticket = Server.UrlEncode(ticket);
+            string mark = Request.Cookies["loginnote"].Value;
             //var result = sha.ComputeHash(System.Text.Encoding.ASCII.GetBytes(returnauth));
 
             //System.IO.StreamReader sr = new System.IO.StreamReader(Server.MapPath(@"..\private.key"));
@@ -72,7 +72,7 @@ namespace englishsnsVS10.Controllers
             //RSAParameters para = new RSAParameters();
             // var result = System.Text.Encoding.ASCII.GetString(rsa.Decrypt(System.Text.Encoding.ASCII.GetBytes(auth), false));
             ILoginValidation validation = new ValidationProxy();
-            if (validation.validate(returnauth, auth))
+            if (validation.validate(mark, ticket))
             {
                 if (customerInfoRepo.GetCustomer(model.uid) == null)
                 {
