@@ -7,8 +7,8 @@ namespace englishsnsVS10.Controllers
 {
     public class TranslationController : Controller
     {
-        ITranslateBoundary googletranslate = TranslateFactory.getInstance().getGoogleTranslate();
-        ITranslateBoundary bingtranslate = TranslateFactory.getInstance().getBingTranslate();
+        ITranslateAdapter googletranslate = TranslateFactory.getInstance().getGoogleTranslate();
+        ITranslateAdapter bingtranslate = TranslateFactory.getInstance().getBingTranslate();
         //
         // GET: /Translation/
         public ActionResult Index()

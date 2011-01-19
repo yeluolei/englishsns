@@ -5,7 +5,7 @@ using System.Web;
 
 namespace englishsnsVS10.Translate
 {
-    public class GoogleTranslateAdapter : GoogleTranslateBoundary,ITranslateBoundary
+    public class GoogleTranslateAdapter : GoogleTranslateBoundary,ITranslateAdapter
     {
          public String requestTranslate(String SentenceEncode, String type)
          {

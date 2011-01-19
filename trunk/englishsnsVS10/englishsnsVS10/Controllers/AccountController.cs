@@ -11,6 +11,8 @@ using englishsnsVS10.Models;
 using englishsnsVS10.datacontext;
 using englishsnsVS10.DAOimpl;
 using System.Security.Cryptography;
+using System.Net;
+using System.IO;
 
 namespace englishsnsVS10.Controllers
 {
@@ -37,22 +39,26 @@ namespace englishsnsVS10.Controllers
 
         public ActionResult LogOn()
         {
+            string test = "时尚";
+            string temp1 = Server.UrlEncode(test);
+            string temp2 = HttpUtility.UrlEncode(test);
             //return View();
-            //string note = GetRandomString(10);
-            //Response.Cookies["loginnote"].Value = note;
-            //Response.Cookies["loginnote"].Expires = DateTime.Now.AddHours(1.0);
-            return Redirect("http://jaccount.sjtu.in/index.php?reurl=http://localhost:12183/account/logon");
+            string note = GetRandomString(10);
+            Response.Cookies["loginnote"].Value = note;
+            Response.Cookies["loginnote"].Expires = DateTime.Now.AddHours(1.0);
+            return Redirect("http://jaccount.sjtu.in/index.php?reurl=http://localhost:12183/account/logon&authnote=" + note);
         }
 
         [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl)
+        public ActionResult LogOn(LogOnModel model, string returnUrl, string auth)
         {
             //SHA1 sha = new SHA1Managed();
 
-            //string returnauth = Request.Cookies["loginnote"].Value;
+            auth = Server.UrlEncode(auth);
+            string returnauth = Request.Cookies["loginnote"].Value;
             //var result = sha.ComputeHash(System.Text.Encoding.ASCII.GetBytes(returnauth));
 
-           // System.IO.StreamReader sr = new System.IO.StreamReader(Server.MapPath(@"..\private.key"));
+            //System.IO.StreamReader sr = new System.IO.StreamReader(Server.MapPath(@"..\private.key"));
             //string publickey = sr.ReadToEnd();
             //sr.Close();
 
@@ -64,19 +70,21 @@ namespace englishsnsVS10.Controllers
             //string temp = rsa.ToXmlString(true);
             //rsa.FromXmlString(publickey);
             //RSAParameters para = new RSAParameters();
-           // var result = System.Text.Encoding.ASCII.GetString(rsa.Decrypt(System.Text.Encoding.ASCII.GetBytes(auth), false));
-         
-            if (customerInfoRepo.GetCustomer(model.uid) == null)
+            // var result = System.Text.Encoding.ASCII.GetString(rsa.Decrypt(System.Text.Encoding.ASCII.GetBytes(auth), false));
+            ILoginValidation validation = new ValidationProxy();
+            if (validation.validate(returnauth, auth))
             {
-                user user = new user();
-                user.username = model.uid;
-                user.name = model.chinesename;
-                customerInfoRepo.AddCustomer(user);
-                customerInfoRepo.save();
-           
+                if (customerInfoRepo.GetCustomer(model.uid) == null)
+                {
+                    user user = new user();
+                    user.username = model.uid;
+                    user.name = model.chinesename;
+                    customerInfoRepo.AddCustomer(user);
+                    customerInfoRepo.save();
+
+                }
+                FormsService.SignIn(model.uid, false);              
             }
-            
-            FormsService.SignIn(model.uid, false);
             return RedirectToAction("Index", "Home");
         }
 
@@ -172,8 +180,8 @@ namespace englishsnsVS10.Controllers
 
             for (int i = 1; i < size; i++)
             {
-                int temp = ran.Next(100);
-                while ( 'a' > temp || temp > 'z' )
+                int temp = ran.Next('a', 'z');
+                while ('a' > temp || temp > 'z')
                 {
                     temp = ran.Next();
                 }
@@ -182,7 +190,55 @@ namespace englishsnsVS10.Controllers
             return result;
         }
 
-        public static RSAParameters ConvertFromPemPublicKey(string pemFileConent)
+
+    }
+
+    interface ILoginValidation
+    {
+        bool validate(string text, string ticket);
+    }
+
+    public class RemoteValidate : ILoginValidation
+    {
+        public bool validate(string text, string ticket)
+        {
+            string url = "http://jaccount.sjtu.in/validation.php?key=" + text + "&ticket=" + ticket;
+            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            string result;
+            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+            {
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                result = reader.ReadToEnd();
+            }
+
+            if (result == "1")
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+
+    }
+
+    public class LocalValidate : ILoginValidation
+    {
+        public bool validate(string text, string ticket)
+        {
+            System.IO.StreamReader sr = new System.IO.StreamReader(@"..\public.key");
+            string publickey = sr.ReadToEnd();
+            sr.Close();
+
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+
+            rsa.ImportParameters(ConvertFromPemPrivateKey(publickey));
+
+            var result = System.Text.Encoding.ASCII.GetString(rsa.Decrypt(System.Text.Encoding.ASCII.GetBytes(ticket), false));
+            return true;
+        }
+
+        private RSAParameters ConvertFromPemPublicKey(string pemFileConent)
         {
             if (string.IsNullOrEmpty(pemFileConent))
             {
@@ -204,7 +260,7 @@ namespace englishsnsVS10.Controllers
             return para;
         }
 
-        public static RSAParameters ConvertFromPemPrivateKey(string pemFileConent)
+        private RSAParameters ConvertFromPemPrivateKey(string pemFileConent)
         {
             if (string.IsNullOrEmpty(pemFileConent))
             {
@@ -266,6 +322,29 @@ namespace englishsnsVS10.Controllers
             para.DQ = pemExponent2;
             para.InverseQ = pemCoefficient;
             return para;
+        }
+    }
+
+    public class ValidationProxy : ILoginValidation
+    {
+        ILoginValidation remote;
+        ILoginValidation local;
+
+        public bool validate(string text, string ticket)
+        {
+            remote = new RemoteValidate();
+            bool result;
+            try
+            {
+                result = remote.validate(text, ticket);
+            }
+            catch
+            {
+                local = new LocalValidate();
+                result = local.validate(text, ticket);
+            }
+
+            return result;
         }
     }
 }
