@@ -13,6 +13,7 @@ using englishsnsVS10.DAOimpl;
 using System.Security.Cryptography;
 using System.Net;
 using System.IO;
+using englishsnsVS10.SystemInterfaces;
 
 namespace englishsnsVS10.Controllers
 {
@@ -23,6 +24,8 @@ namespace englishsnsVS10.Controllers
         public CustomerInfoRepo customerInfoRepo { get; set; }
         public IFormsAuthenticationService FormsService { get; set; }
         public IMembershipService MembershipService { get; set; }
+
+        ILoginValidation validation;
 
         Random ran = new Random();
         protected override void Initialize(RequestContext requestContext)
@@ -50,7 +53,7 @@ namespace englishsnsVS10.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl, string ticket)
+        public ActionResult LogOn(LogOnModel model, string ticket)
         {
             //SHA1 sha = new SHA1Managed();
 
@@ -71,7 +74,7 @@ namespace englishsnsVS10.Controllers
             //rsa.FromXmlString(publickey);
             //RSAParameters para = new RSAParameters();
             // var result = System.Text.Encoding.ASCII.GetString(rsa.Decrypt(System.Text.Encoding.ASCII.GetBytes(auth), false));
-            ILoginValidation validation = new ValidationProxy();
+            
             if (validation.validate(mark, ticket))
             {
                 if (customerInfoRepo.GetCustomer(model.uid) == null)
@@ -193,158 +196,158 @@ namespace englishsnsVS10.Controllers
 
     }
 
-    interface ILoginValidation
-    {
-        bool validate(string text, string ticket);
-    }
+    //interface ILoginValidation
+    //{
+    //    bool validate(string text, string ticket);
+    //}
 
-    public class RemoteValidate : ILoginValidation
-    {
-        public bool validate(string text, string ticket)
-        {
-            string url = "http://jaccount.sjtu.in/validation.php?key=" + text + "&ticket=" + ticket;
-            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
-            string result;
-            using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
-            {
-                StreamReader reader = new StreamReader(response.GetResponseStream());
-                result = reader.ReadToEnd();
-            }
+    //public class RemoteValidate : ILoginValidation
+    //{
+    //    public bool validate(string text, string ticket)
+    //    {
+    //        string url = "http://jaccount.sjtu.in/validation.php?key=" + text + "&ticket=" + ticket;
+    //        HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+    //        string result;
+    //        using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+    //        {
+    //            StreamReader reader = new StreamReader(response.GetResponseStream());
+    //            result = reader.ReadToEnd();
+    //        }
 
-            if (result == "1")
-            {
-                return true;
-            }
-            else
-                return false;
-        }
+    //        if (result == "1")
+    //        {
+    //            return true;
+    //        }
+    //        else
+    //            return false;
+    //    }
 
 
-    }
+    //}
 
-    public class LocalValidate : ILoginValidation
-    {
-        public bool validate(string text, string ticket)
-        {
-            System.IO.StreamReader sr = new System.IO.StreamReader(@"..\public.key");
-            string publickey = sr.ReadToEnd();
-            sr.Close();
+    //public class LocalValidate : ILoginValidation
+    //{
+    //    public bool validate(string text, string ticket)
+    //    {
+    //        System.IO.StreamReader sr = new System.IO.StreamReader(@"..\public.key");
+    //        string publickey = sr.ReadToEnd();
+    //        sr.Close();
 
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+    //        RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
 
-            rsa.ImportParameters(ConvertFromPemPrivateKey(publickey));
+    //        rsa.ImportParameters(ConvertFromPemPrivateKey(publickey));
 
-            var result = System.Text.Encoding.ASCII.GetString(rsa.Decrypt(System.Text.Encoding.ASCII.GetBytes(ticket), false));
-            return true;
-        }
+    //        var result = System.Text.Encoding.ASCII.GetString(rsa.Decrypt(System.Text.Encoding.ASCII.GetBytes(ticket), false));
+    //        return true;
+    //    }
 
-        private RSAParameters ConvertFromPemPublicKey(string pemFileConent)
-        {
-            if (string.IsNullOrEmpty(pemFileConent))
-            {
-                throw new ArgumentNullException("pemFileConent", "This arg cann't be empty.");
-            }
-            pemFileConent = pemFileConent.Replace("-----BEGIN PUBLIC KEY-----", "").Replace("-----END PUBLIC KEY-----", "").Replace("\n", "").Replace("\r", "");
-            byte[] keyData = Convert.FromBase64String(pemFileConent);
-            if (keyData.Length < 162)
-            {
-                throw new ArgumentException("pem file content is incorrect.");
-            }
-            byte[] pemModulus = new byte[128];
-            byte[] pemPublicExponent = new byte[3];
-            Array.Copy(keyData, 29, pemModulus, 0, 128);
-            Array.Copy(keyData, 159, pemPublicExponent, 0, 3);
-            RSAParameters para = new RSAParameters();
-            para.Modulus = pemModulus;
-            para.Exponent = pemPublicExponent;
-            return para;
-        }
+    //    private RSAParameters ConvertFromPemPublicKey(string pemFileConent)
+    //    {
+    //        if (string.IsNullOrEmpty(pemFileConent))
+    //        {
+    //            throw new ArgumentNullException("pemFileConent", "This arg cann't be empty.");
+    //        }
+    //        pemFileConent = pemFileConent.Replace("-----BEGIN PUBLIC KEY-----", "").Replace("-----END PUBLIC KEY-----", "").Replace("\n", "").Replace("\r", "");
+    //        byte[] keyData = Convert.FromBase64String(pemFileConent);
+    //        if (keyData.Length < 162)
+    //        {
+    //            throw new ArgumentException("pem file content is incorrect.");
+    //        }
+    //        byte[] pemModulus = new byte[128];
+    //        byte[] pemPublicExponent = new byte[3];
+    //        Array.Copy(keyData, 29, pemModulus, 0, 128);
+    //        Array.Copy(keyData, 159, pemPublicExponent, 0, 3);
+    //        RSAParameters para = new RSAParameters();
+    //        para.Modulus = pemModulus;
+    //        para.Exponent = pemPublicExponent;
+    //        return para;
+    //    }
 
-        private RSAParameters ConvertFromPemPrivateKey(string pemFileConent)
-        {
-            if (string.IsNullOrEmpty(pemFileConent))
-            {
-                throw new ArgumentNullException("pemFileConent", "This arg cann‘t be empty.");
-            }
-            pemFileConent = pemFileConent.Replace("-----BEGIN RSA PRIVATE KEY-----", "").Replace("-----END RSA PRIVATE KEY-----", "").Replace("\n", "").Replace("\r", "");
-            byte[] keyData = Convert.FromBase64String(pemFileConent);
-            if (keyData.Length < 609)
-            {
-                throw new ArgumentException("pem file content is incorrect.");
-            }
+    //    private RSAParameters ConvertFromPemPrivateKey(string pemFileConent)
+    //    {
+    //        if (string.IsNullOrEmpty(pemFileConent))
+    //        {
+    //            throw new ArgumentNullException("pemFileConent", "This arg cann‘t be empty.");
+    //        }
+    //        pemFileConent = pemFileConent.Replace("-----BEGIN RSA PRIVATE KEY-----", "").Replace("-----END RSA PRIVATE KEY-----", "").Replace("\n", "").Replace("\r", "");
+    //        byte[] keyData = Convert.FromBase64String(pemFileConent);
+    //        if (keyData.Length < 609)
+    //        {
+    //            throw new ArgumentException("pem file content is incorrect.");
+    //        }
 
-            int index = 11;
-            byte[] pemModulus = new byte[128];
-            Array.Copy(keyData, index, pemModulus, 0, 128);
+    //        int index = 11;
+    //        byte[] pemModulus = new byte[128];
+    //        Array.Copy(keyData, index, pemModulus, 0, 128);
 
-            index += 128;
-            index += 2;//141
-            byte[] pemPublicExponent = new byte[3];
-            Array.Copy(keyData, index, pemPublicExponent, 0, 3);
+    //        index += 128;
+    //        index += 2;//141
+    //        byte[] pemPublicExponent = new byte[3];
+    //        Array.Copy(keyData, index, pemPublicExponent, 0, 3);
 
-            index += 3;
-            index += 4;//148
-            byte[] pemPrivateExponent = new byte[128];
-            Array.Copy(keyData, index, pemPrivateExponent, 0, 128);
+    //        index += 3;
+    //        index += 4;//148
+    //        byte[] pemPrivateExponent = new byte[128];
+    //        Array.Copy(keyData, index, pemPrivateExponent, 0, 128);
 
-            index += 128;
-            index += ((int)keyData[index + 1] == 64 ? 2 : 3);//279
-            byte[] pemPrime1 = new byte[64];
-            Array.Copy(keyData, index, pemPrime1, 0, 64);
+    //        index += 128;
+    //        index += ((int)keyData[index + 1] == 64 ? 2 : 3);//279
+    //        byte[] pemPrime1 = new byte[64];
+    //        Array.Copy(keyData, index, pemPrime1, 0, 64);
 
-            index += 64;
-            index += ((int)keyData[index + 1] == 64 ? 2 : 3);//346
-            byte[] pemPrime2 = new byte[64];
-            Array.Copy(keyData, index, pemPrime2, 0, 64);
+    //        index += 64;
+    //        index += ((int)keyData[index + 1] == 64 ? 2 : 3);//346
+    //        byte[] pemPrime2 = new byte[64];
+    //        Array.Copy(keyData, index, pemPrime2, 0, 64);
 
-            index += 64;
-            index += ((int)keyData[index + 1] == 64 ? 2 : 3);//412/413
-            byte[] pemExponent1 = new byte[64];
-            Array.Copy(keyData, index, pemExponent1, 0, 64);
+    //        index += 64;
+    //        index += ((int)keyData[index + 1] == 64 ? 2 : 3);//412/413
+    //        byte[] pemExponent1 = new byte[64];
+    //        Array.Copy(keyData, index, pemExponent1, 0, 64);
 
-            index += 64;
-            index += ((int)keyData[index + 1] == 64 ? 2 : 3);//479/480
-            byte[] pemExponent2 = new byte[64];
-            Array.Copy(keyData, index, pemExponent2, 0, 64);
+    //        index += 64;
+    //        index += ((int)keyData[index + 1] == 64 ? 2 : 3);//479/480
+    //        byte[] pemExponent2 = new byte[64];
+    //        Array.Copy(keyData, index, pemExponent2, 0, 64);
 
-            index += 64;
-            index += ((int)keyData[index + 1] == 64 ? 2 : 3);//545/546
-            byte[] pemCoefficient = new byte[64];
-            Array.Copy(keyData, index, pemCoefficient, 0, 64);
+    //        index += 64;
+    //        index += ((int)keyData[index + 1] == 64 ? 2 : 3);//545/546
+    //        byte[] pemCoefficient = new byte[64];
+    //        Array.Copy(keyData, index, pemCoefficient, 0, 64);
 
-            RSAParameters para = new RSAParameters();
-            para.Modulus = pemModulus;
-            para.Exponent = pemPublicExponent;
-            para.D = pemPrivateExponent;
-            para.P = pemPrime1;
-            para.Q = pemPrime2;
-            para.DP = pemExponent1;
-            para.DQ = pemExponent2;
-            para.InverseQ = pemCoefficient;
-            return para;
-        }
-    }
+    //        RSAParameters para = new RSAParameters();
+    //        para.Modulus = pemModulus;
+    //        para.Exponent = pemPublicExponent;
+    //        para.D = pemPrivateExponent;
+    //        para.P = pemPrime1;
+    //        para.Q = pemPrime2;
+    //        para.DP = pemExponent1;
+    //        para.DQ = pemExponent2;
+    //        para.InverseQ = pemCoefficient;
+    //        return para;
+    //    }
+    //}
 
-    public class ValidationProxy : ILoginValidation
-    {
-        ILoginValidation remote;
-        ILoginValidation local;
+    //public class ValidationProxy : ILoginValidation
+    //{
+    //    ILoginValidation remote;
+    //    ILoginValidation local;
 
-        public bool validate(string text, string ticket)
-        {
-            remote = new RemoteValidate();
-            bool result;
-            try
-            {
-                result = remote.validate(text, ticket);
-            }
-            catch
-            {
-                local = new LocalValidate();
-                result = local.validate(text, ticket);
-            }
+    //    public bool validate(string text, string ticket)
+    //    {
+    //        remote = new RemoteValidate();
+    //        bool result;
+    //        try
+    //        {
+    //            result = remote.validate(text, ticket);
+    //        }
+    //        catch
+    //        {
+    //            local = new LocalValidate();
+    //            result = local.validate(text, ticket);
+    //        }
 
-            return result;
-        }
-    }
+    //        return result;
+    //    }
+    //}
 }
