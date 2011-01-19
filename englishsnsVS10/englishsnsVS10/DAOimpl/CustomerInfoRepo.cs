@@ -127,6 +127,8 @@ namespace englishsnsVS10.DAOimpl
         {
             u.shares.Add(s);
         }
+
+
         /// <summary>
         /// Save data to the database
         /// </summary>

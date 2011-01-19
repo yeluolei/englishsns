@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Follow</h2>
+    <h2>Follow</h2><%:Html.ActionLink("查看所有follower","AllFollower") %>
     <% using (Html.BeginForm("Index", "Follow", FormMethod.Post))
        { %>
     <p>请输入要Follow的人的账号: </p>
