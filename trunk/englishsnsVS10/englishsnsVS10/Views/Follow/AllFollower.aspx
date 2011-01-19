@@ -26,9 +26,9 @@
     
         <tr>
             <td>
-                <%: Html.ActionLink("Edit", "Edit", new { id=item.id }) %> |
+<%--                <%: Html.ActionLink("Edit", "Edit", new { id=item.id }) %> |
                 <%: Html.ActionLink("Details", "Details", new { id=item.id })%> |
-                <%: Html.ActionLink("Delete", "Delete", new { id=item.id })%>
+                <%: Html.ActionLink("Delete", "Delete", new { id=item.id })%>--%>
             </td>
             <td>
                 <%: item.user.id %>

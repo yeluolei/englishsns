@@ -28,6 +28,9 @@
                     <%=Html.Encode(exp.expcontent)%>
                 </p>
             </td>
+            <td>
+                 <%=exp.modifier%>
+            </td>
             <%if (Request.IsAuthenticated)
               { %>
             <td style="width: 80px">
