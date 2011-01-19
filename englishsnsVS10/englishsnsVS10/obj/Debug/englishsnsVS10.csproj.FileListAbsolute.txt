@@ -50,3 +50,13 @@ E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsn
 E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\zh-Hant\System.Json.resources.dll
 E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.dll
 E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\obj\Debug\englishsnsVS10.pdb
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\System.Json.dll
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\System.Json.xml
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\de\System.Json.resources.dll
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\es\System.Json.resources.dll
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\fr\System.Json.resources.dll
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\it\System.Json.resources.dll
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\ja\System.Json.resources.dll
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\ko\System.Json.resources.dll
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\zh-Hans\System.Json.resources.dll
+D:\MyProj\OO\englishsns\englishsnsVS10\englishsnsVS10\bin\zh-Hant\System.Json.resources.dll

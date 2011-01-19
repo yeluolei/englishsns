@@ -1,19 +1,14 @@
 ﻿using System;
-using englishsnsVS10.DAOimpl;
-namespace englishsnsVS10.DAO
+namespace englishsnsVS10.SystemInterfaces
 {
-    interface IEnglishDictRepo
+    public interface IEnglishDictRepo
     {
-        System.Linq.IQueryable<string> getExplanations(string queryWord);
+        void AddExplanation(englishsnsVS10.datacontext.explanation ex);
+        void DeleteExplanation(englishsnsVS10.datacontext.explanation ex);
         englishsnsVS10.datacontext.explanation GetExplanation(int id);
+        System.Linq.IQueryable<englishsnsVS10.datacontext.explanation> getExplanations(string queryWord);
+        System.Linq.IQueryable<englishsnsVS10.datacontext.explanation> GetHistory(englishsnsVS10.datacontext.explanation ex);
+        englishsnsVS10.datacontext.explanation GetRootExplanation(englishsnsVS10.datacontext.explanation ex);
         void Save();
-    }
-    class EnglishDictRepoFactory {
-        static EnglishDictRepo instance = null;
-        public static EnglishDictRepo getInstance() {
-            if (instance==null)
-                instance = new EnglishDictRepo();
-            return instance;
-        }
     }
 }

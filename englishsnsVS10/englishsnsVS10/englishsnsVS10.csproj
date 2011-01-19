@@ -106,6 +106,8 @@
     <Compile Include="Controllers\TranslationController.cs" />
     <Compile Include="Controllers\WordsBookController.cs" />
     <Compile Include="DAOimpl\CustomerInfoRepo.cs" />
+    <Compile Include="SystemInterfaces\EnglishDictRepoFactory.cs" />
+    <Compile Include="SystemInterfaces\IEnglishDictRepo.cs" />
     <Compile Include="datacontext\CustomerInfo.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,7 +118,6 @@
     <Compile Include="Models\SentenceModels.cs" />
     <Compile Include="Models\ShareModels.cs" />
     <Compile Include="Models\UserModels.cs" />
-    <Compile Include="SystemInterfaces\IEnglishDictRepo.cs" />
     <Compile Include="Models\LookUpWordResult.cs" />
     <Compile Include="datacontext\englishdict.designer.cs">
       <AutoGen>True</AutoGen>

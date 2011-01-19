@@ -4,16 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using englishsnsVS10.Models;
-using englishsnsVS10.DAO;
+
 using System.Text.RegularExpressions;
 using englishsnsVS10.DAOimpl;
+using englishsnsVS10.SystemInterfaces;
 namespace englishsnsVS10.Controllers
 {
     public class LookUpController : Controller
     {
         //
         // GET: /LookUp/
-        private EnglishDictRepo dictRepo = EnglishDictRepoFactory.getInstance();
+        private IEnglishDictRepo dictRepo = EnglishDictRepoFactory.getEnglishDictRepo();
 
 //         public ActionResult Index()
 //         {
