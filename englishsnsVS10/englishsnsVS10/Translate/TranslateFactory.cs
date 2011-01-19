@@ -7,10 +7,10 @@ namespace englishsnsVS10.Translate
 {
     public class TranslateFactory
     {
-        public ITranslateBoundary getGoogleTranslate(){
+        public ITranslateAdapter getGoogleTranslate(){
             return new GoogleTranslateAdapter();
         }
-        public ITranslateBoundary getBingTranslate()
+        public ITranslateAdapter getBingTranslate()
         {
             return new BingTranslateAdapter();
         }

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace englishsnsVS10.Translate
 {
-    public class BingTranslateAdapter : BingTranslateBoundary , ITranslateBoundary
+    public class BingTranslateAdapter : BingTranslateBoundary , ITranslateAdapter
     {
          public String requestTranslate(String SentenceEncode, String type)
          {

@@ -132,7 +132,7 @@
     <Compile Include="Translate\BingTranslateAdapter.cs" />
     <Compile Include="Translate\BingTranslateBoundary.cs" />
     <Compile Include="Translate\GoogleTranslateAdapter.cs" />
-    <Compile Include="Translate\ITranslateBoundary.cs" />
+    <Compile Include="Translate\ITranslateAdapter.cs" />
     <Compile Include="Translate\GoogleTranslateBoundary.cs" />
     <Compile Include="Translate\TranslateFactory.cs" />
   </ItemGroup>
