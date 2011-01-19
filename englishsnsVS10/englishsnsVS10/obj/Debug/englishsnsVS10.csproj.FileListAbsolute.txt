@@ -41,3 +41,12 @@ E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\bin\ja\System.
 E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\bin\ko\System.Json.resources.dll
 E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\bin\zh-Hans\System.Json.resources.dll
 E:\study\Programming\Web\englishsns\englishsnsVS10\englishsnsVS10\bin\zh-Hant\System.Json.resources.dll
+E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\System.Json.dll
+E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\de\System.Json.resources.dll
+E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\es\System.Json.resources.dll
+E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\fr\System.Json.resources.dll
+E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\it\System.Json.resources.dll
+E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\ja\System.Json.resources.dll
+E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\ko\System.Json.resources.dll
+E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\zh-Hans\System.Json.resources.dll
+E:\学习资料\面向对象分析与设计5\englishsns\englishsnsVS10\englishsnsVS10\bin\zh-Hant\System.Json.resources.dll

@@ -31,7 +31,7 @@
             <td>
                 <%: Html.ActionLink("Edit", "Edit", new { username = item.username })%> |
                 <%: Html.ActionLink("Details", "Details", new { username = item.username })%> |
-                <%--<%: Html.ActionLink("Create", "Create", new { username = item.username })%> |--%>
+                <%: Html.ActionLink("Create", "Create", new { username = item.username })%> |
                 <%: Html.ActionLink("Delete", "Delete", new { username = item.username })%>
             </td>
             <td class="style1">
@@ -53,7 +53,7 @@
     </table>
 
     <p>
-        <%: Html.ActionLink("Create New", "Create") %>
+        <%: Html.ActionLink("Add New", "Index") %>
     </p>
 
 </asp:Content>
