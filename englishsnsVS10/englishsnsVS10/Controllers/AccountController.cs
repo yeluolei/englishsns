@@ -71,11 +71,15 @@ namespace englishsnsVS10.Controllers
                     customerInfoRepo.save();
 
                 }
-                FormsService.SignIn(model.uid, false);              
+                signin(model.uid);              
             }
             return RedirectToAction("Index", "Home");
         }
 
+        private void signin(string id)
+        {
+            FormsService.SignIn(id, false);
+        }
         // **************************************
         // URL: /Account/LogOff
         // **************************************
